@@ -311,6 +311,7 @@ ul.dots li::before{content:"";position:absolute;left:2px;top:12px;width:8px;heig
 #bar .time{color:var(--coral);font-weight:800}
 .steps li.hwgo{cursor:pointer;transition:transform .15s}
 .steps li.hwgo:hover{transform:translateX(4px)}
+.lawlink{display:flex;flex-direction:column;gap:4px;padding:12px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);text-decoration:none;font-size:18px;max-width:640px}.lawlink span{font-size:15px;color:var(--muted)}.lawlink:hover{border-color:var(--coral)}
 tr.hwgo{cursor:pointer}tr.hwgo:hover td{background:rgba(232,115,90,.07)}tr.hwgo .see{margin-left:10px;font:700 13px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:3px 10px;white-space:nowrap;vertical-align:middle}
 .steps li.hwgo .see{margin-left:auto;flex:none;font:700 14px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:4px 12px;white-space:nowrap}
 
@@ -1848,6 +1849,23 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
 </section>
 
 <!-- ================= 질의응답 ================= -->
+<section class="slide" data-group="수업에 가져가기" data-title="Vrew 결과물, 상업적으로 써도 될까?" data-min="0.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Copyright · <b>Vrew 공식 도움말 기준</b> (도움말 날짜 2026-05-21)</span></div>
+  <h2 data-in>Vrew 결과물, <em>요소마다 조건이 달라요</em></h2>
+  <table class="brw" data-in>
+    <tr><th style="width:250px">영상에 들어간 것</th><th style="width:420px">Vrew 안내</th><th>조건 · 예외</th></tr>
+    <tr><td><b>AI 목소리</b></td><td class="ok">상업 · 비상업 모두 가능, 출처 표기 없이</td><td>일본어 <b>VOICEVOX</b> 목소리만 출처 표기</td></tr>
+    <tr><td><b>무료 이미지 · 비디오</b></td><td class="ok">상업 가능 (Pixabay · Pexels)</td><td>원본 그대로 판매 · 배포 금지 · <b>얼굴 · 상표 · 로고</b>가 보이면 상업 사용 불가 · GIPHY는 권장 안 함</td></tr>
+    <tr><td><b>배경음악 · 효과음</b></td><td class="ok">상업 · 비상업 모두 가능</td><td>공급사마다 범위가 다를 수 있어요 → 음원 제목 옆 <b>ⓘ</b>로 확인</td></tr>
+    <tr><td><b>AI 이미지 · AI 비디오</b></td><td style="color:var(--coral);font-weight:700">공식 도움말에서 조건을 찾지 못했어요</td><td>Vrew <b>[의견 보내기] → [채팅 상담]</b>으로 확인하기</td></tr>
+  </table>
+  <div class="row" data-in style="gap:14px;margin-top:16px;flex-wrap:wrap">
+    <a class="lawlink" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543" target="_blank" rel="noopener">📜 <b>인공지능 기본법</b> <span>법률 제20676호 · 2026. 1. 22. 시행 · 국가법령정보센터</span></a>
+    <a class="lawlink" href="https://www.copyright.or.kr/gov/nuri/view.do?brdctsno=54252" target="_blank" rel="noopener">📘 <b>생성형 인공지능 결과물에 의한 저작권 분쟁 예방 안내서</b> <span>한국저작권위원회 · 2025</span></a>
+  </div>
+  <div class="hl" data-in>Vrew 공지: <b>2026년 12월 1일부터 1인 1계정</b>, 여러 명이 한 계정을 같이 쓰는 것도 허용되지 않아요. 법률 판단이 필요하면 위 자료와 Vrew 상담으로 확인해요.</div>
+</section>
+
 <section class="slide sec" data-group="질의응답 · 마무리" data-title="질의응답" data-min="2.5">
   <div class="inner">
     <div class="eyebrow" data-in>Q&amp;A</div>
