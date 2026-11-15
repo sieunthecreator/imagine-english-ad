@@ -1907,6 +1907,19 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
   const NAMES=['기획','대본 구상','대본 생성','이미지 프롬프트','이미지 생성','영상 생성'];
   S.forEach(s=>{const st=+s.dataset.step;if(!st)return;const d=document.createElement('div');d.className='stepper';d.innerHTML=NAMES.map((n,i)=>`<span class="${i+1===st?'on':(i+1<st?'done':'')}">${'①②③④⑤⑥'[i]} ${n}</span>`).join('');s.appendChild(d)});
   let NOTES={};try{NOTES=JSON.parse(document.getElementById('notesData').textContent)}catch(e){}
+  const NKEY=(()=>{const seen={};return S.map(s=>{const k=s.dataset.title||'';seen[k]=(seen[k]||0)+1;return seen[k]>1?k+' #'+seen[k]:k})})();
+  const DRAFT_LS='sini-notes-drafts';
+  const lsGet=()=>{try{return JSON.parse(localStorage.getItem(DRAFT_LS)||'{}')}catch(e){return{}}};
+  const lsSet=o=>{try{localStorage.setItem(DRAFT_LS,JSON.stringify(o))}catch(e){}};
+  function noteOf(n){const k=NKEY[n],d=lsGet(),f=window.NOTE_EDITS||{};return k in d?d[k]:(k in f?f[k]:(NOTES[n+1]||''))}
+  function mergedEdits(){const out=Object.assign({},window.NOTE_EDITS||{},lsGet());
+    NKEY.forEach((k,n)=>{if(k in out&&out[k]===(NOTES[n+1]||''))delete out[k]});
+    Object.keys(out).forEach(k=>{if(!NKEY.includes(k))delete out[k]});return out}
+  window.__deck={key:n=>NKEY[n],note:noteOf,orig:n=>NOTES[n+1]||'',cur:()=>cur,count:()=>S.length,
+    title:n=>S[n]?(S[n].dataset.group+' · '+S[n].dataset.title):'',
+    setDraft(n,txt){const d=lsGet();d[NKEY[n]]=txt;lsSet(d);if(n===cur)noteText.textContent=txt||'(이 장의 대본은 발표자노트.md를 보세요)'},
+    hasDrafts:()=>Object.keys(lsGet()).length>0,mergedEdits,
+    commit(all){window.NOTE_EDITS=all;lsSet({})},go:n=>go(n)};
   const notes=document.getElementById('notes'),noteText=document.getElementById('noteText');
   const tl=document.getElementById('tocList');let g=null,box;
   S.forEach((s,i)=>{if(s.dataset.group!==g){g=s.dataset.group;box=document.createElement('div');box.className='g';box.innerHTML='<b>'+g+'</b>';tl.appendChild(box)}const a=document.createElement('a');a.href='#'+(i+1);a.textContent=(i+1)+'. '+s.dataset.title;box.appendChild(a)});
@@ -1933,7 +1946,7 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
     fitSlide(s);
     clearTimeout(window.__fin);window.__fin=setTimeout(()=>{s.getAnimations({subtree:true}).forEach(a=>{if(['rise','pop','hang'].includes(a.animationName)&&a.playState!=='finished'){try{a.finish()}catch(e){}}})},2400);
     document.getElementById('grp').textContent=s.dataset.group+' · '+s.dataset.title;document.getElementById('time').textContent='';document.getElementById('page').textContent=(n+1)+' / '+S.length;document.getElementById('prog').style.width=((n+1)/S.length*100)+'%';
-    noteText.textContent=NOTES[n+1]||'(이 장의 대본은 발표자노트.md를 보세요)';
+    noteText.textContent=noteOf(n)||'(이 장의 대본은 발표자노트.md를 보세요)';
     tl.querySelectorAll('a').forEach((a,i)=>a.classList.toggle('cur',i===n));
     if(location.hash!=='#'+(n+1))history.replaceState(null,'','#'+(n+1));pwRender();}
   addEventListener('resize',()=>fitSlide(S[cur]));
@@ -1954,21 +1967,69 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
   const presBtn=document.getElementById('presBtn');
   const HASNOTES=Object.keys(NOTES).length>0;
   if(!HASNOTES)presBtn.style.display='none';
-  const PHTML='<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>발표자 창 · 상상을 영어로 팝니다</title><style>'+
-   'body{margin:0;font-family:"Pretendard","Malgun Gothic",sans-serif;background:#1f2430;color:#f4efe6;display:flex;flex-direction:column;height:100vh}'+
-   'header{display:flex;align-items:center;gap:14px;padding:12px 18px;background:#151922;font-size:18px}'+
-   'header b{color:#ffcf7a}#el{font-size:30px;font-weight:800;color:#7fe0b0;font-variant-numeric:tabular-nums}#ck{color:#aab}'+
-   'header button{background:#2c3342;color:#fff;border:1px solid #445;border-radius:8px;padding:7px 12px;font-size:16px;cursor:pointer}'+
-   '.sp{flex:1}#tt{padding:14px 22px 4px;font-size:22px;font-weight:800;color:#ffcf7a}'+
-   '#nt{flex:1;overflow:auto;padding:8px 22px 22px;line-height:1.75;white-space:pre-wrap}'+
-   'footer{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#151922;font-size:18px}#nx{flex:1;color:#cfd6e4}'+
-   'footer button{font-size:22px;padding:10px 26px;background:#e8735a;color:#fff;border:0;border-radius:10px;cursor:pointer}'+
-   '</style></head><body><header><b>발표자 창</b><span id="pg"></span><span class="sp"></span>경과 <span id="el">0:00</span><button id="rs">경과 0으로</button><span id="ck"></span><button id="fm">글자 −</button><button id="fp">글자 +</button></header>'+
-   '<div id="tt"></div><div id="nt"></div><footer><button id="pp">◀ 이전</button><span id="nx"></span><button id="nn">다음 ▶</button></footer></body></html>';
-  function pwRender(){if(!PW||PW.closed)return;const d=PW.document,s=S[cur],nx=S[cur+1];if(!d.getElementById('nt'))return;
-    d.getElementById('pg').textContent=(cur+1)+' / '+S.length;d.getElementById('tt').textContent=s.dataset.group+' · '+s.dataset.title;
-    const nt=d.getElementById('nt');nt.textContent=NOTES[cur+1]||'(이 장은 대본이 없어요)';nt.style.fontSize=PFS+'px';nt.scrollTop=0;
-    d.getElementById('nx').textContent=nx?('다음 → '+(cur+2)+'. '+nx.dataset.title):'마지막 장이에요';}
+  const PHTML=`<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>발표자 창 · 상상을 영어로 팝니다</title><style>
+body{margin:0;font-family:"Pretendard","Malgun Gothic",sans-serif;background:#1f2430;color:#f4efe6;display:flex;flex-direction:column;height:100vh}
+header,footer{display:flex;align-items:center;gap:12px;padding:10px 16px;background:#151922;font-size:17px;flex-wrap:wrap}
+header b{color:#ffcf7a}#el{font-size:28px;font-weight:800;color:#7fe0b0;font-variant-numeric:tabular-nums}#ck{color:#aab}
+button{background:#2c3342;color:#fff;border:1px solid #445;border-radius:8px;padding:7px 12px;font-size:15px;cursor:pointer}
+button.save{background:#2f8f6a;border-color:#2f8f6a;font-weight:800}
+.sp{flex:1}#tt{padding:12px 20px 4px;font-size:21px;font-weight:800;color:#ffcf7a}
+#nt{flex:1;margin:6px 16px 12px;padding:12px 14px;line-height:1.75;background:#262c3a;color:#f4efe6;border:1px solid #3a4253;border-radius:10px;resize:none;font-family:inherit;outline:none}
+#nt:focus{border-color:#ffcf7a}
+#st{font-size:15px;color:#aab}#st.dirty{color:#ffcf7a}#st.ok{color:#7fe0b0}#st.err{color:#ff8f7a}
+#nx{flex:1;color:#cfd6e4}footer .nav{font-size:21px;padding:9px 24px;background:#e8735a;border:0}
+</style></head><body>
+<header><b>발표자 창</b><span id="pg"></span><span class="sp"></span>경과 <span id="el">0:00</span><button id="rs">경과 0으로</button><span id="ck"></span><button id="fm">글자 −</button><button id="fp">글자 +</button></header>
+<div id="tt"></div>
+<textarea id="nt" spellcheck="false" placeholder="여기에 대본을 바로 고쳐 쓰세요"></textarea>
+<footer><button class="nav" id="pp">◀ 이전</button><span id="nx"></span><span id="st"></span><button id="rv" title="이 장 대본을 처음 상태로">원래 대본</button><button class="save" id="sv" title="강의교안_완성본 폴더의 notes-edits.js에 저장 (Ctrl+S)">💾 폴더에 저장</button><button class="nav" id="nn">다음 ▶</button></footer>
+<script>
+const DK=()=>opener&&!opener.closed?opener.__deck:null;
+const $=i=>document.getElementById(i), nt=$('nt'), st=$('st');
+let shown=-1, timer=null;
+function status(cls,msg){st.className=cls;st.textContent=msg}
+function idb(){return new Promise((res,rej)=>{const r=indexedDB.open('sini-deck',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function kv(k,v){const db=await idb();return new Promise((res,rej)=>{const tx=db.transaction('kv',v===undefined?'readonly':'readwrite'),os=tx.objectStore('kv');const q=v===undefined?os.get(k):os.put(v,k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})}
+async function dirHandle(ask){
+  let h=null;try{h=await kv('dir')}catch(e){}
+  if(h){let p=await h.queryPermission({mode:'readwrite'});if(p!=='granted'&&ask)p=await h.requestPermission({mode:'readwrite'});if(p==='granted')return h;if(!ask)return null}
+  if(!ask)return null;
+  status('dirty','「강의교안_완성본」 폴더(index.html이 있는 폴더)를 고르고 [변경사항 저장]을 눌러 주세요');
+  h=await showDirectoryPicker({id:'sini-deck',mode:'readwrite'});
+  try{await h.getFileHandle('index.html')}catch(e){alert('이 폴더에는 index.html이 없어요. 「강의교안_완성본」 폴더를 골라 주세요.');return null}
+  try{await kv('dir',h)}catch(e){}
+  return h}
+async function saveFile(ask){
+  const dk=DK();if(!dk)return;
+  try{
+    const h=await dirHandle(ask);
+    if(!h){status('dirty','이 컴퓨터에 임시 저장됨 · 💾 눌러 폴더에 저장');return}
+    const all=dk.mergedEdits();
+    const fh=await h.getFileHandle('notes-edits.js',{create:true});const w=await fh.createWritable();
+    await w.write('/* 발표자 창에서 고친 대본 (장 제목 기준) · 자동 저장 파일, 지우면 원래 대본으로 돌아가요 */\\nwindow.NOTE_EDITS='+JSON.stringify(all,null,1)+';\\n');
+    await w.close();dk.commit(all);
+    const n=new Date();status('ok','폴더에 저장됨 '+n.getHours()+':'+String(n.getMinutes()).padStart(2,'0'));
+  }catch(e){if(e&&e.name==='AbortError'){status('dirty','폴더를 고르지 않아 이 컴퓨터에만 임시 저장됨')}else{status('err','저장 실패: '+(e&&e.message||e))}}}
+function render(){const dk=DK();if(!dk)return;const n=dk.cur();
+  if(n!==shown){shown=n;nt.value=dk.note(n);nt.scrollTop=0}
+  $('pg').textContent=(n+1)+' / '+dk.count();$('tt').textContent=dk.title(n);
+  $('nx').textContent=n+1<dk.count()?('다음 → '+(n+2)+'. '+dk.title(n+1).split(' · ').pop()):'마지막 장이에요';
+  $('rv').style.visibility=dk.note(n)!==dk.orig(n)?'visible':'hidden'}
+nt.addEventListener('input',()=>{const dk=DK();if(!dk)return;dk.setDraft(shown,nt.value);status('dirty','고치는 중…');$('rv').style.visibility='visible';
+  clearTimeout(timer);timer=setTimeout(()=>saveFile(false),1200)});
+$('sv').onclick=()=>{const dk=DK();if(dk)dk.setDraft(shown,nt.value);saveFile(true)};
+$('rv').onclick=()=>{const dk=DK();if(!dk)return;if(!confirm('이 장 대본을 처음 상태로 되돌릴까요?'))return;nt.value=dk.orig(shown);dk.setDraft(shown,nt.value);saveFile(false);render()};
+addEventListener('keydown',e=>{const dk=DK();if(!dk)return;const k=e.key,inText=document.activeElement===nt;
+  if((e.ctrlKey||e.metaKey)&&(k==='s'||k==='S')){e.preventDefault();$('sv').click();return}
+  if(k==='PageDown'||(!inText&&(k==='ArrowRight'||k===' '))){e.preventDefault();dk.go(dk.cur()+1)}
+  else if(k==='PageUp'||(!inText&&k==='ArrowLeft')){e.preventDefault();dk.go(dk.cur()-1)}
+  else if(k==='Escape'&&inText){nt.blur()}});
+addEventListener('beforeunload',()=>{const dk=DK();if(dk&&dk.hasDrafts())saveFile(false)});
+(async()=>{const dk=DK();if(!dk)return;if(dk.hasDrafts()){status('dirty','저장 안 된 수정이 있어요 · 💾 눌러 폴더에 저장');}else{let h=null;try{h=await kv('dir')}catch(e){}status(h?'ok':'', h?'고치면 폴더에 자동 저장돼요':'💾 한 번 눌러 폴더를 연결하면 그다음부터 자동 저장')}})();
+window.__render=render;
+<\/script></body></html>`;
+  function pwRender(){if(!PW||PW.closed)return;const d=PW.document;if(!d.getElementById('nt'))return;
+    d.getElementById('nt').style.fontSize=PFS+'px';try{PW.__render&&PW.__render()}catch(e){}}
   function openPW(){if(!HASNOTES)return;if(PW&&!PW.closed){PW.focus();return}
     PW=window.open('','sini_presenter','width=980,height=760');if(!PW){alert('팝업이 막혔어요. 주소창 오른쪽 팝업 아이콘에서 "항상 허용"을 눌러 주세요.');return}
     try{PW.resizeTo(980,760)}catch(e){}const d=PW.document;d.open();d.write(PHTML);d.close();
@@ -1978,7 +2039,6 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
     d.getElementById('fp').onclick=()=>{PFS=Math.min(44,PFS+2);pwRender()};d.getElementById('fm').onclick=()=>{PFS=Math.max(16,PFS-2);pwRender()};
     const tick=()=>{if(!PW||PW.closed)return;const e=Math.floor((Date.now()-t0)/1000),n=new Date();d.getElementById('el').textContent=Math.floor(e/60)+':'+String(e%60).padStart(2,'0');d.getElementById('ck').textContent='지금 '+n.getHours()+':'+String(n.getMinutes()).padStart(2,'0')};
     const iv=setInterval(()=>{if(!PW||PW.closed){clearInterval(iv);return}tick()},1000);tick();
-    PW.addEventListener('keydown',e=>{const k=e.key;if(['ArrowRight','PageDown',' '].includes(k)){e.preventDefault();go(cur+1)}else if(['ArrowLeft','PageUp'].includes(k)){e.preventDefault();go(cur-1)}});
     pwRender();}
   presBtn.onclick=openPW;window.__pw=()=>PW;
 
