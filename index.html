@@ -315,6 +315,10 @@ ul.dots li::before{content:"";position:absolute;left:2px;top:12px;width:8px;heig
 tr.hwgo{cursor:pointer}tr.hwgo:hover td{background:rgba(232,115,90,.07)}tr.hwgo .see{margin-left:10px;font:700 13px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:3px 10px;white-space:nowrap;vertical-align:middle}
 .steps li.hwgo .see{margin-left:auto;flex:none;font:700 14px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:4px 12px;white-space:nowrap}
 
+.hook5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}.hook5 .frame{padding:5px}.hook5 video{display:block;width:100%;aspect-ratio:9/16;max-height:440px;object-fit:cover}.hook5 .cap{text-align:center;font-size:16px;line-height:1.35;margin-top:6px}.hook5 .cap b{font-size:19px;color:var(--ink)}
+.follow{display:grid;grid-template-columns:1.25fr 1fr 230px;gap:18px;align-items:start}.follow.f3{grid-template-columns:1.4fr 1fr 210px}.follow.fv2{grid-template-columns:1fr 230px 230px}.follow .prompt.clip{margin-top:8px;max-height:104px}.follow .fh{font-size:16px;line-height:1.45;margin:4px 0 0}.follow .steps li{font-size:18px}
+.fshots{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fshot .frame{padding:4px}.fshot img{display:block;width:100%;max-height:300px;object-fit:contain;background:#fff}.fshot .cap{font-size:14px;text-align:center;margin-top:4px}.follow.f3 .fshots img{max-height:170px}
+.fvid .frame{padding:5px}.fvid video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}.fvid .cap{text-align:center;font-size:15px;margin-top:4px}
 .top .hwgo.hwtop{margin-left:auto;cursor:pointer;display:inline-flex}.top .hwgo.hwtop .see{font:700 15px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:6px 14px;white-space:nowrap;letter-spacing:0;text-transform:none}.top .hwgo.hwtop:hover .see{filter:brightness(1.1)}.slide[data-step] .top .hwgo.hwtop{margin-left:0}
 .scene3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.scene4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.scene3 .frame,.scene4 .frame{padding:6px}.scene3 .frame img,.scene3 .frame video,.scene4 .frame img,.scene4 .frame video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.scene3 .cap,.scene4 .cap{text-align:center;font-size:17px;line-height:1.4}
 .pdis td{font-size:18px;line-height:1.4;padding-top:7px;padding-bottom:7px}.pdis th{font-size:17px}
@@ -418,6 +422,35 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <div class="phone"><div class="frame"><video src="assets/ex-eraser.mp4" data-auto muted loop playsinline preload="metadata"></video></div></div>
     <div class="phone"><div class="frame"><video src="assets/ex-umbrella.mp4" data-auto muted loop playsinline preload="metadata"></video></div></div>
   </div>
+</section>
+
+<section class="slide" data-group="열기" data-title="Vrew로 이런 것도 만들어요" data-min="1">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Made with Vrew · <b>모두 Vrew 안에서 만들었어요</b> · 영상을 크게 열면 소리까지</span></div>
+  <h2 data-in>시작 전에 한 편씩! <em>모두 Vrew</em>로 만들었어요</h2>
+  <div class="hook5">
+    <div data-in><div class="frame"><video src="assets/voice/heart-goldfish-amelia.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><b>하트 금붕어 유리병</b><br>교사 대표작 · AI 이미지 + AI 목소리</div></div>
+    <div data-in><div class="frame"><video src="assets/voice/bubble-violet.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><b>비눗방울 유리병</b><br>교사 대표작 · 같은 병, 다른 색감</div></div>
+    <div data-in><div class="frame"><video src="assets/hook/strawberry.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><b>유리 딸기 ASMR</b><br>AI 비디오 · 써는 소리까지</div></div>
+    <div data-in><div class="frame"><video src="assets/hook/seoha.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><b>햄버거 가게 꼬마 직원</b><br>아이 사진 1장 → 이미지 → 영상</div></div>
+    <div data-in><div class="frame"><video src="assets/hook/squish2.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><b>말랑말랑 지구본</b><br>요즘 유행 ‘Squish’ 효과</div></div>
+  </div>
+  <div class="hl" data-in>어떻게 만들었는지(모델 · 프롬프트 · 설정 · 크레딧)는 마지막 <b>‘영상 제작 따라 해 보기’</b>에서 그대로 보여 드려요.</div>
+</section>
+
+<section class="slide" data-group="열기" data-title="어느 교과에서든" data-min="0.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Not just English · <b>교과는 선생님 마음대로</b></span></div>
+  <h2 data-in>영어 수업으로 보여 드려도, <em>교과는 자유</em>예요</h2>
+  <div class="g3">
+    <div class="card" data-in><span class="lbl sun">과학</span><p style="margin-top:10px;font-size:20px">관찰한 현상 · 실험 과정을 <b>대본 → 장면 → 영상</b>으로 설명해 보기</p></div>
+    <div class="card" data-in><span class="lbl sun">사회</span><p style="margin-top:10px;font-size:20px">우리 지역 소개 · 역사 속 한 장면을 <b>짧은 영상 기사</b>로 만들어 보기</p></div>
+    <div class="card" data-in><span class="lbl sun">국어 · 미술 · 창체</span><p style="margin-top:10px;font-size:20px">내가 쓴 이야기를 <b>영상 동화</b>로, 내 작품을 <b>소개 영상</b>으로</p></div>
+  </div>
+  <p class="small" data-in style="margin-top:6px">위 세 가지는 제가 드리는 <b>활용 제안</b>이에요. 실제로 해 본 수업은 영어 두 가지예요.</p>
+  <div class="row" data-in style="gap:18px;margin-top:10px">
+    <div class="card mist f1"><span class="lbl">에듀집 ‘브루’ 제품 정보</span><p style="margin-top:8px;font-size:19px">활용 교과목: <b>전과목</b> · 실과/기술·가정/정보 · 진로/상담 · 특수교육</p></div>
+    <div class="card mist f1"><span class="lbl">에듀집 ‘브루’ 소개</span><p style="margin-top:8px;font-size:19px">자막 자동 생성 · <b>600여 개 AI 목소리</b> · 텍스트로 비디오 만들기</p></div>
+  </div>
+  <div class="hl" data-in>오늘 익히는 순서 <b>대본 → 이미지 → 영상 → 자막</b>은 교과가 바뀌어도 그대로예요. 영어 대신 <b>우리 교과 내용</b>만 넣으면 돼요.</div>
 </section>
 
 <section class="slide oq" data-group="열기" data-title="여는 질문" data-min="0.5">
@@ -2015,6 +2048,59 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
       <ul class="dots"><li>학교 계정 + 메뉴: 파일 업로드 · Drive · Notebooks · 가이드 학습 · 이미지 · 음악 · Canvas · Deep Research — <b>영상 만들기 없음</b>.</li><li>구글 Workspace 표: Education Fundamentals·Standard는 영상 생성 <b>접근 불가</b>.</li><li>Education Plus · AI Pro for Education을 쓰는 학교만 Vids에서 월 200초 / 2,000초.</li></ul></div>
   </div>
   <div class="hl" data-in>그래서 <b>Gemini는 대본과 이미지까지</b>, 영상은 <b>Vrew</b>에서. 출처: Google Workspace 도움말 「About AI usage limits」(2026-11-06), Gemini 도움말 「직장·학교 계정으로 Gemini 사용」.</div>
+</section>
+
+<section class="slide" data-group="프롬프트 정리집 · 같은 장면, 다른 모델" data-title="따라 해 보기 ① 유리 딸기 ASMR" data-min="0.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Make it yourself · <b>영상 제작 따라 해 보기</b> · 실제 화면 그대로 (11/15)</span></div>
+  <h2 data-in>① 유리 딸기 ASMR: <em>한 번에</em> 영상 + 소리</h2>
+  <div class="follow">
+    <div class="fsteps" data-in>
+      <ol class="steps" style="gap:7px">
+        <li><span><b>삽입 → AI 비디오</b> → 생성</span></li>
+        <li><span>모델 <b>Veo 3.1 Fast</b> <span class="sub">(더보기 안)</span></span></li>
+        <li><span>프롬프트 붙여넣기</span></li>
+        <li><span><b>8초 · 720p · 소리 켜짐 · 9:16</b></span></li>
+        <li><span>비디오 생성 · <b>400 크레딧</b></span></li>
+      </ol>
+      <div class="prompt clip"><button class="copy">복사</button>Extreme close-up ASMR video, vertical. On a dark wooden cutting board, a sharp chef&#x27;s knife slowly slices through a strawberry made entirely of transparent crystal glass, glowing ruby red with tiny golden seeds inside. A hand gently holds the glass strawberry. The knife cuts it cleanly into two shiny halves, revealing a sparkling glass interior with light refracting inside. Crisp, satisfying glass slicing and crackling sounds, a soft tap of the knife on the board. Soft studio lighting, shallow depth of field, slow motion. No music, no text, no faces.</div>
+    </div>
+    <div class="fshots" data-in><div class="fshot"><div class="frame"><img src="assets/hook/steps/strawberry-1-settings.png" alt="모델 · 프롬프트 · 설정"></div><div class="cap">모델 · 프롬프트 · 설정</div></div><div class="fshot"><div class="frame"><img src="assets/hook/steps/strawberry-2-generate.png" alt="비디오 생성 버튼 · 금액"></div><div class="cap">비디오 생성 버튼 · 금액</div></div></div>
+    <div class="fvid" data-in><div class="frame"><video src="assets/hook/strawberry.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap">결과 · 8초</div></div>
+  </div>
+  <div class="hl" data-in>같은 설정에서 <b>Veo 3.1 · 1080p</b>는 1,280 크레딧으로 표시됐어요. 소리가 필요한 ASMR은 <b>소리 켜짐</b>이 핵심이에요.</div>
+</section>
+
+<section class="slide" data-group="프롬프트 정리집 · 같은 장면, 다른 모델" data-title="따라 해 보기 ② 사진 한 장으로 꼬마 직원" data-min="0.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Make it yourself · <b>영상 제작 따라 해 보기</b> · 참고 이미지 → 시작 이미지</span></div>
+  <h2 data-in>② 사진 한 장 → <em>이미지</em> → <em>영상</em></h2>
+  <div class="follow f3">
+    <div class="fsteps" data-in>
+      <p class="fh"><b>1단계 이미지</b> · 삽입 → AI 이미지 · <b>Nano Banana 2.1</b> · 일반 · 9:16 · <b>15 크레딧</b> · 참고 이미지 → PC에서 불러오기(아이 사진)</p>
+      <div class="prompt clip"><button class="copy">복사</button>Photorealistic photo of the exact toddler from the reference image, keeping the same face, eyes and hair. The toddler is dressed as a tiny McDonald&#x27;s crew member: black cap with the yellow McDonald&#x27;s M logo, red and black uniform shirt, a small headset microphone. The toddler sits inside a large brown paper McDonald&#x27;s takeout bag, smiling at the camera, with French fries in a red McDonald&#x27;s carton, chicken nuggets and a cheeseburger in front. Warm cozy lighting, shallow depth of field, cute and funny, vertical 9:16.</div>
+      <p class="fh" style="margin-top:8px"><b>2단계 영상</b> · 삽입 → AI 비디오 · 시작/종료 이미지 → <b>시작 이미지</b>(1단계 결과) · Veo 3.1 Fast · 8초 · 720p · 소리 켜짐 · 9:16 · <b>400 크레딧</b></p>
+      <div class="prompt clip"><button class="copy">복사</button>The toddler crew member inside the paper bag looks at the camera, giggles happily, waves a tiny hand, then picks up one French fry and takes a small bite, wiggling with joy. Keep the same face and outfit as the start image. Gentle handheld camera, warm restaurant lighting, cute baby giggle sounds and soft cafe ambience. No text.</div>
+    </div>
+    <div class="fshots" data-in><div class="fshot"><div class="frame"><img src="assets/hook/seoha-ref.jpg" alt="참고 이미지 (사진 1장)"></div><div class="cap">참고 이미지 (사진 1장)</div></div><div class="fshot"><div class="frame"><img src="assets/hook/seoha-image.jpg" alt="1단계 결과 이미지"></div><div class="cap">1단계 결과 이미지</div></div><div class="fshot"><div class="frame"><img src="assets/hook/steps/seoha-2-image-settings.png" alt="1단계 설정"></div><div class="cap">1단계 설정</div></div><div class="fshot"><div class="frame"><img src="assets/hook/steps/seoha-4-video-settings.png" alt="2단계 설정"></div><div class="cap">2단계 설정</div></div></div>
+    <div class="fvid" data-in><div class="frame"><video src="assets/hook/seoha.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap">결과 · 8초</div></div>
+  </div>
+  <div class="hl" data-in>얼굴을 살리는 순서: <b>참고 이미지로 사진부터</b> 만들고, 그 사진을 <b>시작 이미지</b>로 넣어 움직여요. 프롬프트에 “same face”를 꼭 넣었어요.</div>
+</section>
+
+<section class="slide" data-group="프롬프트 정리집 · 같은 장면, 다른 모델" data-title="따라 해 보기 ③ 말랑말랑 지구본" data-min="0.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Make it yourself · <b>영상 제작 따라 해 보기</b> · 프롬프트 고쳐서 다시</span></div>
+  <h2 data-in>③ 말랑 지구본: <em>얼마나 크게</em>를 써요</h2>
+  <div class="follow fv2">
+    <div class="fsteps" data-in>
+      <p class="fh"><b>설정</b> · 삽입 → AI 비디오 · Veo 3.1 Fast · 8초 · 720p · 소리 켜짐 · 9:16 · <b>400 크레딧 × 2번</b></p>
+      <p class="fh"><b>1차</b> · “squishes like soft memory foam jelly” → 손자국만 살짝</p>
+      <div class="prompt clip"><button class="copy">복사</button>Satisfying squish video, vertical close-up. On a wooden school desk sits a hard plastic classroom globe. A hand slowly presses down on the globe, and the globe squishes like soft memory foam jelly, denting deeply and wobbling, the continents stretching and squeezing. When the hand lets go, the globe slowly bounces back into a perfect round shape. Soft squishy and gentle bouncy sounds. Bright classroom daylight, shallow depth of field, smooth slow motion. No music, no text, no faces.</div>
+      <p class="fh" style="margin-top:8px"><b>2차</b> · “squashes almost completely flat” · “Exaggerated, cartoon-like elastic physics” 추가</p>
+      <div class="prompt clip"><button class="copy">복사</button>Viral AI squish effect, vertical close-up. A classroom desk globe on a wooden school desk. A hand squeezes the globe and the hard globe instantly turns soft like a jelly stress ball: it squashes almost completely flat under the palm, bulges out between the fingers, the continents stretch and ripple, then when the hand lifts it springs back up, jiggling and wobbling like jelly before settling round again. Exaggerated, cartoon-like elastic physics. Loud satisfying squishy, squelchy and boing sounds. Bright classroom daylight, smooth slow motion. No music, no text, no faces.</div>
+    </div>
+    <div class="fvid" data-in><div class="frame"><video src="assets/hook/squish.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap">1차 결과</div></div>
+    <div class="fvid" data-in><div class="frame"><video src="assets/hook/squish2.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><b>2차 결과</b></div></div>
+  </div>
+  <div class="hl" data-in>결과가 약하면 모델을 바꾸기 전에 <b>변화의 크기</b>(납작하게 · 과장되게)를 프롬프트에 구체적으로 써 보세요.</div>
 </section>
 
 <!-- ================= 가져가기 ================= -->
