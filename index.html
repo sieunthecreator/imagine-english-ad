@@ -315,6 +315,7 @@ ul.dots li::before{content:"";position:absolute;left:2px;top:12px;width:8px;heig
 tr.hwgo{cursor:pointer}tr.hwgo:hover td{background:rgba(232,115,90,.07)}tr.hwgo .see{margin-left:10px;font:700 13px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:3px 10px;white-space:nowrap;vertical-align:middle}
 .steps li.hwgo .see{margin-left:auto;flex:none;font:700 14px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:4px 12px;white-space:nowrap}
 
+.kids4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:0 40px}.kids4 .frame{padding:5px}.kids4 video{display:block;width:100%;aspect-ratio:9/16;max-height:430px;object-fit:cover}.kids4 .cap{text-align:center;font-size:16px;line-height:1.4;margin-top:6px;background:rgba(255,250,244,.82);border-radius:10px;padding:6px 8px}.kids4 .cap b{font-size:20px;color:var(--ink)}.kids4 .kcard{display:block;font-size:13px;font-weight:800;color:var(--coral);letter-spacing:.02em}
 .hook5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}.hook5 .frame{padding:5px}.hook5 video{display:block;width:100%;aspect-ratio:9/16;max-height:440px;object-fit:cover}.hook5 .cap{text-align:center;font-size:16px;line-height:1.35;margin-top:6px}.hook5 .cap b{font-size:19px;color:var(--ink)}
 .follow{display:grid;grid-template-columns:1.25fr 1fr 230px;gap:18px;align-items:start}.follow.f3{grid-template-columns:1.4fr 1fr 210px}.follow.fv2{grid-template-columns:1fr 230px 230px}.follow .prompt.clip{margin-top:8px;max-height:104px}.follow .fh{font-size:16px;line-height:1.45;margin:4px 0 0}.follow .steps li{font-size:18px}
 .fshots{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fshot .frame{padding:4px}.fshot img{display:block;width:100%;max-height:300px;object-fit:contain;background:#fff}.fshot .cap{font-size:14px;text-align:center;margin-top:4px}.follow.f3 .fshots img{max-height:170px}
@@ -647,6 +648,18 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <div data-in><div class="frame"><video src="assets/class/hw-video.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap">태블릿 화면 키보드로 <b>교안 칸에 직접 입력</b></div></div>
   </div>
   <div class="hl" data-in>거미줄 · 호박으로 꾸민 교실에서, 아이들은 <b>태블릿으로 교안을 따라</b> Vrew 영상을 만들었어요.</div>
+</section>
+
+<section class="slide dusk" data-group="수업 사례 ① 할로윈 반전 숏츠" data-title="아이들이 만든 반전 숏츠" data-min="1">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Student works · <b>학급 패들렛 영상 54편 중 4편</b> · 이름은 싣지 않았어요</span></div>
+  <h2 data-in>아이들이 직접 만든 <em>반전 숏츠</em> 4편</h2>
+  <div class="kids4">
+    <div data-in><div class="frame"><video src="assets/hwkids/kid-1.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><span class="kcard">발소리 (문 칸에 올림)</span><b>마녀와 고양이 나비</b><br>어깨 위 고양이가 사라지고 “Meow!”</div></div>
+    <div data-in><div class="frame"><video src="assets/hwkids/kid-2.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><span class="kcard">호박이 혼자 움직인다</span><b>비 맞은 호박</b><br>호박이 직접 말하고, 끝은 호박 수프</div></div>
+    <div data-in><div class="frame"><video src="assets/hwkids/kid-3.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><span class="kcard">아무도 없는데 발소리</span><b>숲속의 마녀</b><br>뒤따라온 건 엄마 · 6장면 같은 주인공</div></div>
+    <div data-in><div class="frame"><video src="assets/hwkids/kid-4.mp4" data-auto muted loop playsinline controls preload="metadata"></video></div><div class="cap"><span class="kcard">유령의 뜻밖의 부탁</span><b>그림 그리는 아이</b><br>유령의 부탁: “같이 그림 그리자”</div></div>
+  </div>
+  <div class="hl" data-in>고른 기준(제 판단): <b>장면마다 같은 주인공</b> · <b>사건 → 긴장 → 반전</b>이 화면에 보임 · <b>영어 대사</b>가 자막과 목소리로 끝까지 들림.</div>
 </section>
 
 <section class="slide dusk" data-group="수업 사례 ① 할로윈 반전 숏츠" data-title="아이들이 막힌 곳" data-min="1.5">
@@ -1595,13 +1608,13 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <div class="hl" data-in>✅ 문장 · 이미지 · 자막까지 고쳤으면 채팅에 <b>6</b> &nbsp;· ⚠️ ‘전체 자막 지우기’는 되돌릴 수 없어요</div>
 </section>
 
-<section class="slide" data-group="Vrew 함께 만들기 ②" data-title="(선택) 장면 3 움직이기" data-min="2">
+<section class="slide" data-group="Vrew 함께 만들기 ②" data-title="(선택) 원하는 장면 움직이기" data-min="2">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Option · <b>다 한 분만</b></span></div>
-  <h2 data-in>능력이 보이는 <em>장면 3 하나만</em> 움직여요</h2>
+  <h2 data-in><em>움직임을 주고 싶은 이미지</em>를 골라 영상으로 만들어요</h2>
   <div class="row" style="gap:26px">
     <div data-in style="width:620px"><div class="frame"><video src="assets/ai-settings.mp4" controls muted playsinline preload="metadata" data-auto loop></video></div><div class="cap">교사 녹화 · 모델 선택 → 금액 확인</div></div>
     <ol class="steps f1">
-      <li data-in><span>장면 3 이미지 → <b>AI로 비디오 생성</b></span></li>
+      <li data-in><span>움직이고 싶은 <b>장면 이미지</b>를 골라 → <b>AI로 비디오 생성</b></span></li>
       <li data-in><span>움직임 한 줄<br><span class="sub">“컵이 돌며 아이스크림이 솟아오른다”</span></span></li>
       <li data-in><span><b>금액을 보고</b> 누르기</span></li>
     </ol>
