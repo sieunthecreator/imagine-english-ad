@@ -1919,7 +1919,17 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
     title:n=>S[n]?(S[n].dataset.group+' · '+S[n].dataset.title):'',
     setDraft(n,txt){const d=lsGet();d[NKEY[n]]=txt;lsSet(d);if(n===cur)noteText.textContent=txt||'(이 장의 대본은 발표자노트.md를 보세요)'},
     hasDrafts:()=>Object.keys(lsGet()).length>0,mergedEdits,
-    commit(all){window.NOTE_EDITS=all;lsSet({})},go:n=>go(n)};
+    commit(all){window.NOTE_EDITS=all;lsSet({})},go:n=>go(n),
+    buildMd(md){const parts=md.split(/^(### \d+\. .*)$/m);if((parts.length-1)/2!==S.length)return null;
+      for(let i=1,n=0;i<parts.length;i+=2,n++){const txt=noteOf(n).replace(/\r/g,'');const nl=txt.indexOf('\n');
+        const first=(nl<0?txt:txt.slice(0,nl)).trim()||S[n].dataset.title,rest=(nl<0?'':txt.slice(nl+1)).trim();
+        const b=parts[i+1],g=b.search(/^## /m),body=g<0?b:b.slice(0,g),tail=g<0?'':b.slice(g);
+        const curFirst=parts[i].replace(/^### \d+\. /,'').replace(/\r/g,'').trim(),curBody=body.replace(/\r/g,'').trim();
+        if(curFirst===first&&curBody===rest)continue;
+        parts[i]='### '+(n+1)+'. '+first;
+        const lead=body.match(/^\s*/)[0],trail=body.match(/\s*$/)[0];
+        const eol=body.includes(String.fromCharCode(13,10))?String.fromCharCode(13,10):String.fromCharCode(10);parts[i+1]=(rest?lead+rest.split(String.fromCharCode(10)).join(eol)+(trail||'\n\n'):(lead.includes('\n')?'\n\n':lead+trail))+tail}
+      return parts.join('')}};
   const notes=document.getElementById('notes'),noteText=document.getElementById('noteText');
   const tl=document.getElementById('tocList');let g=null,box;
   S.forEach((s,i)=>{if(s.dataset.group!==g){g=s.dataset.group;box=document.createElement('div');box.className='g';box.innerHTML='<b>'+g+'</b>';tl.appendChild(box)}const a=document.createElement('a');a.href='#'+(i+1);a.textContent=(i+1)+'. '+s.dataset.title;box.appendChild(a)});
@@ -2008,7 +2018,12 @@ async function saveFile(ask){
     const fh=await h.getFileHandle('notes-edits.js',{create:true});const w=await fh.createWritable();
     await w.write('/* 발표자 창에서 고친 대본 (장 제목 기준) · 자동 저장 파일, 지우면 원래 대본으로 돌아가요 */\\nwindow.NOTE_EDITS='+JSON.stringify(all,null,1)+';\\n');
     await w.close();dk.commit(all);
-    const n=new Date();status('ok','폴더에 저장됨 '+n.getHours()+':'+String(n.getMinutes()).padStart(2,'0'));
+    let mdMsg='';
+    try{const mh=await h.getFileHandle('발표자노트.md');const old=await (await mh.getFile()).text();const nw=dk.buildMd(old);
+      if(nw===null)mdMsg=' · 발표자노트.md는 장 수가 달라 그대로 둠';
+      else{if(nw!==old){const mw=await mh.createWritable();await mw.write(nw);await mw.close()}mdMsg=' · 발표자노트.md도 고침'}}
+    catch(e){mdMsg=' · 발표자노트.md 없음'}
+    const n=new Date();status('ok','폴더에 저장됨 '+n.getHours()+':'+String(n.getMinutes()).padStart(2,'0')+mdMsg);
   }catch(e){if(e&&e.name==='AbortError'){status('dirty','폴더를 고르지 않아 이 컴퓨터에만 임시 저장됨')}else{status('err','저장 실패: '+(e&&e.message||e))}}}
 function render(){const dk=DK();if(!dk)return;const n=dk.cur();
   if(n!==shown){shown=n;nt.value=dk.note(n);nt.scrollTop=0}
