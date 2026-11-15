@@ -309,6 +309,13 @@ ul.dots li::before{content:"";position:absolute;left:2px;top:12px;width:8px;heig
 #bar button{border:1px solid var(--line);background:#fff;color:var(--ink);font:700 15px var(--sans);border-radius:8px;padding:6px 12px;cursor:pointer}
 #bar button:hover{background:#f3e9d8}
 #bar .time{color:var(--coral);font-weight:800}
+#bar a.cb{border:1px solid var(--coral);background:var(--coral);color:#fff;font:700 15px var(--sans);border-radius:8px;padding:6px 12px;text-decoration:none;white-space:nowrap}
+#bar a.cb:hover{filter:brightness(.95)}
+.cbact{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.cbact button,.cbact a{border:0;border-radius:12px;padding:11px 18px;font:800 18px var(--sans);cursor:pointer;text-decoration:none;color:#fff;background:var(--coral)}
+.cbact a.pd{background:var(--gold2);color:var(--ink)}
+.cbact .ok{align-self:center;font-size:16px;color:var(--good);font-weight:700;display:none}
+.cbact .ok.on{display:inline}
 #prog{position:absolute;left:0;bottom:46px;height:4px;background:linear-gradient(90deg,var(--coral),var(--gold2));z-index:50;transition:width .4s}
 #toc{position:absolute;inset:0;z-index:80;background:rgba(255,250,242,.97);display:none;padding:46px 64px;overflow:auto}
 #toc.on{display:block}
@@ -1491,7 +1498,8 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <h2 data-in>글은 <em>클래스보드</em>, 영상 파일은 <em>패들렛</em></h2>
   <div class="g2">
     <div class="card" data-in style="border-top:7px solid var(--aqua)"><h3>T셀파 클래스보드 (연수용 보드)</h3>
-      <ul class="dots"><li>글 제목: <b>제품 이름</b></li><li>장면 캡처 1장</li><li>내가 고른 영어 한 문장 + 뜻</li><li>AI 활용 표시 · 고친 곳</li><li><b>패들렛 영상 링크</b> → 클래스보드에서 영상까지</li><li><b>질문·피드백 댓글은 여기서</b></li></ul></div>
+      <ul class="dots"><li>글 제목: <b>제품 이름</b></li><li>장면 캡처 1장</li><li>내가 고른 영어 한 문장 + 뜻</li><li>AI 활용 표시 · 고친 곳</li><li><b>패들렛 영상 링크</b> → 클래스보드에서 영상까지</li><li><b>질문·피드백 댓글은 여기서</b></li></ul>
+      <div class="cbact"><button id="cbCopy">📋 글 틀 복사 + 클래스보드 열기</button><a class="pd" href="https://padlet.com/traces016/padlet-s025hbifafbwnyni6oy1" target="_blank" rel="noopener">🎞 패들렛 열기</a><span class="ok" id="cbOk">복사됐어요! 클래스보드 🎬 칸에 붙여 넣으세요</span></div></div>
     <div class="card" data-in style="border-top:7px solid var(--gold2)"><h3>패들렛 (연수용 영상 모음)</h3>
       <ul class="dots"><li>내보낸 <b>mp4 파일</b></li><li>제목은 클래스보드와 같은 제품 이름</li><li>올린 뒤 <b>영상 링크 복사</b> → 클래스보드 글에 붙이기</li></ul>
       <div class="prompt" style="margin-top:14px;font-size:18px">제목: Snack Cup
@@ -1875,7 +1883,7 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
   <span class="grp" id="grp"></span>
   <span class="time" id="time" style="display:none"></span>
   <button id="prev" aria-label="이전">◀</button><span id="page"></span><button id="next" aria-label="다음">▶</button>
-  <button id="tocBtn">목차</button><button id="noteBtn" style="display:none">대본</button><button id="fsBtn">전체 화면</button>
+  <a class="cb" id="cbBtn" href="https://www.clboard.co.kr/student/944376" target="_blank" rel="noopener" title="연수 게시판(클래스보드) 새 탭으로 열기">📤 클래스보드 제출</a><button id="tocBtn">목차</button><button id="presBtn" title="대본을 별도 창으로 (P 키) · 두 번째 모니터에 두세요">발표자 창</button><button id="noteBtn" style="display:none">대본</button><button id="fsBtn">전체 화면</button>
 </div>
 <div id="toc"><h3>목차 <span class="small">(T 키 · Esc로 닫기)</span></h3><div class="cols" id="tocList"></div></div>
 <div id="pv"><div class="pvc"><div class="pvh"><b class="pvt"></b><button class="pvx">닫기 ✕</button></div><div class="pvn"></div><pre class="pvp"></pre><div class="pvf"><button class="copy pvcopy" data-label="프롬프트 복사">프롬프트 복사</button></div></div></div>
@@ -1927,17 +1935,57 @@ AI 활용: 대본 초안·이미지 AI 도움 / 고친 곳: 2번 문장
     document.getElementById('grp').textContent=s.dataset.group+' · '+s.dataset.title;document.getElementById('time').textContent='';document.getElementById('page').textContent=(n+1)+' / '+S.length;document.getElementById('prog').style.width=((n+1)/S.length*100)+'%';
     noteText.textContent=NOTES[n+1]||'(이 장의 대본은 발표자노트.md를 보세요)';
     tl.querySelectorAll('a').forEach((a,i)=>a.classList.toggle('cur',i===n));
-    if(location.hash!=='#'+(n+1))history.replaceState(null,'','#'+(n+1));}
+    if(location.hash!=='#'+(n+1))history.replaceState(null,'','#'+(n+1));pwRender();}
   addEventListener('resize',()=>fitSlide(S[cur]));
   function fromHash(){const n=parseInt(location.hash.slice(1));go(isNaN(n)?0:n-1)}
   addEventListener('hashchange',()=>{fromHash();toc.classList.remove('on')});
   document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
   document.getElementById('tocBtn').onclick=()=>toc.classList.toggle('on');
   document.getElementById('noteBtn').onclick=()=>notes.classList.toggle('on');
+  // ---- 클래스보드 제출: 글 틀 복사 후 새 탭 ----
+  const CB_URL='https://www.clboard.co.kr/student/944376';
+  const CB_TPL='제목: (제품 이름)\n내가 고른 영어 한 문장: \n뜻: \nAI 활용: / 고친 곳: \n영상: (패들렛 영상 링크)';
+  function copyText(x){try{if(navigator.clipboard&&isSecureContext)return navigator.clipboard.writeText(x)}catch(e){}
+    const a=document.createElement('textarea');a.value=x;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();return Promise.resolve()}
+  const cbCopy=document.getElementById('cbCopy');
+  if(cbCopy)cbCopy.onclick=e=>{e.stopPropagation();const w=window.open(CB_URL,'_blank','noopener');copyText(CB_TPL).finally(()=>{const o=document.getElementById('cbOk');o.classList.add('on');setTimeout(()=>o.classList.remove('on'),4000)})};
+  // ---- 발표자 창: 대본을 별도 창(두 번째 모니터)에 ----
+  let PW=null,PFS=24;
+  const presBtn=document.getElementById('presBtn');
+  const HASNOTES=Object.keys(NOTES).length>0;
+  if(!HASNOTES)presBtn.style.display='none';
+  const PHTML='<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>발표자 창 · 상상을 영어로 팝니다</title><style>'+
+   'body{margin:0;font-family:"Pretendard","Malgun Gothic",sans-serif;background:#1f2430;color:#f4efe6;display:flex;flex-direction:column;height:100vh}'+
+   'header{display:flex;align-items:center;gap:14px;padding:12px 18px;background:#151922;font-size:18px}'+
+   'header b{color:#ffcf7a}#el{font-size:30px;font-weight:800;color:#7fe0b0;font-variant-numeric:tabular-nums}#ck{color:#aab}'+
+   'header button{background:#2c3342;color:#fff;border:1px solid #445;border-radius:8px;padding:7px 12px;font-size:16px;cursor:pointer}'+
+   '.sp{flex:1}#tt{padding:14px 22px 4px;font-size:22px;font-weight:800;color:#ffcf7a}'+
+   '#nt{flex:1;overflow:auto;padding:8px 22px 22px;line-height:1.75;white-space:pre-wrap}'+
+   'footer{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#151922;font-size:18px}#nx{flex:1;color:#cfd6e4}'+
+   'footer button{font-size:22px;padding:10px 26px;background:#e8735a;color:#fff;border:0;border-radius:10px;cursor:pointer}'+
+   '</style></head><body><header><b>발표자 창</b><span id="pg"></span><span class="sp"></span>경과 <span id="el">0:00</span><button id="rs">경과 0으로</button><span id="ck"></span><button id="fm">글자 −</button><button id="fp">글자 +</button></header>'+
+   '<div id="tt"></div><div id="nt"></div><footer><button id="pp">◀ 이전</button><span id="nx"></span><button id="nn">다음 ▶</button></footer></body></html>';
+  function pwRender(){if(!PW||PW.closed)return;const d=PW.document,s=S[cur],nx=S[cur+1];if(!d.getElementById('nt'))return;
+    d.getElementById('pg').textContent=(cur+1)+' / '+S.length;d.getElementById('tt').textContent=s.dataset.group+' · '+s.dataset.title;
+    const nt=d.getElementById('nt');nt.textContent=NOTES[cur+1]||'(이 장은 대본이 없어요)';nt.style.fontSize=PFS+'px';nt.scrollTop=0;
+    d.getElementById('nx').textContent=nx?('다음 → '+(cur+2)+'. '+nx.dataset.title):'마지막 장이에요';}
+  function openPW(){if(!HASNOTES)return;if(PW&&!PW.closed){PW.focus();return}
+    PW=window.open('','sini_presenter','width=980,height=760');if(!PW){alert('팝업이 막혔어요. 주소창 오른쪽 팝업 아이콘에서 "항상 허용"을 눌러 주세요.');return}
+    try{PW.resizeTo(980,760)}catch(e){}const d=PW.document;d.open();d.write(PHTML);d.close();
+    let t0=Date.now();
+    d.getElementById('pp').onclick=()=>go(cur-1);d.getElementById('nn').onclick=()=>go(cur+1);
+    d.getElementById('rs').onclick=()=>{t0=Date.now()};
+    d.getElementById('fp').onclick=()=>{PFS=Math.min(44,PFS+2);pwRender()};d.getElementById('fm').onclick=()=>{PFS=Math.max(16,PFS-2);pwRender()};
+    const tick=()=>{if(!PW||PW.closed)return;const e=Math.floor((Date.now()-t0)/1000),n=new Date();d.getElementById('el').textContent=Math.floor(e/60)+':'+String(e%60).padStart(2,'0');d.getElementById('ck').textContent='지금 '+n.getHours()+':'+String(n.getMinutes()).padStart(2,'0')};
+    const iv=setInterval(()=>{if(!PW||PW.closed){clearInterval(iv);return}tick()},1000);tick();
+    PW.addEventListener('keydown',e=>{const k=e.key;if(['ArrowRight','PageDown',' '].includes(k)){e.preventDefault();go(cur+1)}else if(['ArrowLeft','PageUp'].includes(k)){e.preventDefault();go(cur-1)}});
+    pwRender();}
+  presBtn.onclick=openPW;window.__pw=()=>PW;
+
   document.getElementById('fsBtn').onclick=()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
   addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||document.getElementById('lb').classList.contains('on')||document.getElementById('pv').classList.contains('on'))return;const k=e.key;
     if(['ArrowRight','PageDown',' '].includes(k)){e.preventDefault();go(cur+1)}else if(['ArrowLeft','PageUp'].includes(k)){e.preventDefault();go(cur-1)}
-    else if(k==='Home')go(0);else if(k==='End')go(S.length-1);else if(k==='t'||k==='T')toc.classList.toggle('on');else if(false)notes.classList.toggle('on');else if(k==='Escape'){toc.classList.remove('on');notes.classList.remove('on')}else if(k==='f'||k==='F')document.getElementById('fsBtn').click();});
+    else if(k==='Home')go(0);else if(k==='End')go(S.length-1);else if(k==='t'||k==='T')toc.classList.toggle('on');else if(false)notes.classList.toggle('on');else if(k==='p'||k==='P')openPW();else if(k==='Escape'){toc.classList.remove('on');notes.classList.remove('on')}else if(k==='f'||k==='F')document.getElementById('fsBtn').click();});
   document.querySelectorAll('video[data-pend]').forEach(v=>{const ph=v.parentElement.querySelector('.ph');v.addEventListener('loadeddata',()=>{if(ph)ph.remove()})});
   document.querySelectorAll('.quiz button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.add(x.hasAttribute('data-right')?'right':'wrong'));document.getElementById('quizReveal').classList.add('on')});
   const st={obj:'컵',look:'하얗고 작음',power:'아이스크림을 만든다'};
