@@ -311,6 +311,7 @@ ul.dots li::before{content:"";position:absolute;left:2px;top:12px;width:8px;heig
 #bar .time{color:var(--coral);font-weight:800}
 .steps li.hwgo{cursor:pointer;transition:transform .15s}
 .steps li.hwgo:hover{transform:translateX(4px)}
+tr.hwgo{cursor:pointer}tr.hwgo:hover td{background:rgba(232,115,90,.07)}tr.hwgo .see{margin-left:10px;font:700 13px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:3px 10px;white-space:nowrap;vertical-align:middle}
 .steps li.hwgo .see{margin-left:auto;flex:none;font:700 14px var(--sans);color:#fff;background:var(--coral);border-radius:999px;padding:4px 12px;white-space:nowrap}
 
 #bar a.cb{border:1px solid var(--coral);background:var(--coral);color:#fff;font:700 15px var(--sans);border-radius:8px;padding:6px 12px;text-decoration:none;white-space:nowrap}
@@ -565,10 +566,11 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <tr><td class="k">뜻 모를 때</td><td>—</td><td><b>Gemini for Education</b>을 옆에 켜 두고 도움받기</td></tr>
     <tr><td class="k">문장 틀</td><td>이야기 대사 (문장마다 다름)</td><td class="en">This is my … / It is … / It can … / Try …!</td></tr>
     <tr><td class="k">먼저 정할 것</td><td>장소 · 주인공 · 사건 · 반전</td><td><b>물건 · 모습 · 능력 한 가지</b> (한국어로)</td></tr>
-    <tr><td class="k">고치기 도움</td><td>한 문장 이상 고치기</td><td><b>+ ‘이럴 때 이렇게’ 표 · 문법 4줄</b></td></tr>
+    <tr class="hwgo" data-hw="a13,a14" title="실제 광고제 교안 2장 보기"><td class="k">고치기 도움</td><td>한 문장 이상 고치기</td><td><b>+ ‘이럴 때 이렇게’ 표 · 문법 4줄</b></td></tr>
     <tr><td class="k">주제 범위</td><td>상상 이야기</td><td><b>내 책상 위 실제 물건 + 사진 3장</b></td></tr>
     <tr><td class="k">차시 운영</td><td>2차시 · 처음 Vrew라 시간이 빠듯</td><td><b>3차시: 1차시 기획 · 2~3차시 제작</b>으로 나눔</td></tr>
   </table>
+  <div class="hwpg" hidden><img src="assets/adlesson/ad-p13.jpg" data-hwp="a13" alt="실제 광고제 제작 차시 교안 13/36 · 이럴 때는 이렇게 고쳐요" loading="lazy"><img src="assets/adlesson/ad-p14.jpg" data-hwp="a14" alt="실제 광고제 제작 차시 교안 14/36 · 영어 문법 고치기 (문장 틀 4줄)" loading="lazy"></div>
   <div class="hl" data-in>고민 → 시도(할로윈) → 돌아보기 → <b>다시 설계(광고제)</b>. 수업을 고쳐 가는 과정 자체가 오늘 강의의 이야기예요.</div>
 </section>
 
@@ -2134,7 +2136,7 @@ window.__render=render;
 
   // 할로윈 수업 소개: 단계를 누르면 실제 할로윈 교안 페이지를 크게
   window.__openSet=(arr)=>{if(!arr.length)return;L=arr;li=0;lb.classList.add('on');showLB()};
-  document.querySelectorAll('li.hwgo').forEach(el=>{const pg=el.dataset.hw.split(',');const b=document.createElement('span');b.className='see';b.textContent='교안 보기 ▸'+(pg.length>1?' '+pg.length+'장':'');el.appendChild(b);
+  document.querySelectorAll('.hwgo').forEach(el=>{const pg=el.dataset.hw.split(',');const b=document.createElement('span');b.className='see';b.textContent='교안 보기 ▸'+(pg.length>1?' '+pg.length+'장':'');(el.tagName==='TR'?el.lastElementChild:el).appendChild(b);
     el.addEventListener('click',e=>{e.stopPropagation();const box=el.closest('.slide').querySelector('.hwpg');window.__openSet(pg.map(n=>box.querySelector('img[data-hwp="'+n+'"]')).filter(Boolean))})});
   function closeLB(){lbv.pause();if(document.fullscreenElement===lb)document.exitFullscreen();lb.classList.remove('on')}
   function fsLB(){if(document.fullscreenElement===lb)document.exitFullscreen();else lb.requestFullscreen&&lb.requestFullscreen()}
