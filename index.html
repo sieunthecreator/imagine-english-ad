@@ -549,7 +549,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <div class="col f1">
       <div class="card bad" data-in><h3>① 소리 내어 읽고 말하기</h3><p>AI가 쓴 영어 대사를 <b>소리 내어 읽고 따라 말하기</b>를 어려워했어요.</p></div>
       <div class="card bad" data-in><h3>② 무엇을 넣고, 어디를 고칠지</h3><p>프롬프트에 <b>무엇을 넣을지</b>, “한 문장 이상 고치기”에서 <b>어디를 고칠지</b> 몰라했어요. <span class="sub">잘 고친 예: <span class="en">My dornor is here!</span> → <span class="en" style="color:var(--coral)">My fan is here!</span></span></p></div>
-      <div class="card bad" data-in><h3>③ 처음 쓰는 Vrew 조작</h3><p>처음 쓰는 Vrew라 <b>화면 조작</b>에서도 막혔어요. 일부 영상은 영어가 한국어 화자처럼 들렸어요(원인 미확정).</p></div>
+      <div class="card bad" data-in><h3>③ 처음 쓰는 Vrew 조작</h3><p>처음 쓰는 Vrew라 <b>화면 조작</b>에서도 막혔어요. 영어 목소리를 꼼꼼히 들어 보지 않은 영상은 <b>한국어 화자</b>처럼 들렸어요 → 목소리를 <b>영어</b>로 설정하면 훨씬 나아요.</p></div>
     </div>
     <div data-in style="width:500px"><div class="frame"><img src="assets/vb-script-final.jpg" alt="할로윈 AI 대본"></div><div class="cap">할로윈 교사 시연 대본 — AI 초안 5문장을 교사가 7문장으로 고친 것</div></div>
   </div>
@@ -1202,7 +1202,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
       <div class="vtip" data-in>목소리마다 <b>특징</b>(밝은·중저음·느린 등)과 <b>크레딧</b>(예: 애덤 100자당 1)이 달라요. 검색창에 한국어로 느낌을 쓰면 <b>한국어 목소리</b>가 먼저 나왔어요(11/13) — 영어는 필터로.</div>
     </div>
   </div>
-  <div class="hl" data-in>English로 걸러도 <b>‘한국어 +73·+91’</b> 목소리가 섞여 나와요. 영어가 어색할 수 있어요 — <b>할로윈 수업 일부 영상도 한국어 화자처럼 들렸어요</b>(원인 미확정).</div>
+  <div class="hl" data-in>English로 걸러도 <b>‘한국어 +73·+91’</b> 목소리가 섞여 나와요. 할로윈 수업에서도 <b>영어 목소리를 확인하지 않은 영상</b>은 한국어 화자처럼 들렸어요 → 언어 칸이 <b>‘영어’</b>인 목소리로.</div>
 </section>
 
 <section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 AI 이미지 설정" data-min="2.5">
@@ -1363,6 +1363,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <h2 data-in>영상 <em>수정 방법</em> 모음</h2>
   <table class="fixhub" data-in>
     <tr><th style="width:300px">이런 현상이 생기면</th><th style="width:330px">원인</th><th>이렇게 고쳐요</th><th style="width:170px">따라 하기</th></tr>
+    <tr><td class="p">영어가 한국어 화자처럼 들려요</td><td>영어 목소리인지 확인하지 않고 만들었어요</td><td class="s">언어 칸이 <b>‘영어’</b>인 목소리로 바꾸기</td><td class="go">4 영어 목소리</td></tr>
     <tr><td class="p">한국어 목소리가 먼저 나와요</td><td>검색창에 한국어로 느낌을 썼어요</td><td class="s">언어 칸이 <b>‘영어’</b>인 목소리로 바꾸기</td><td class="go">4 영어 목소리</td></tr>
     <tr><td class="p">5초 AI 영상이 1~2초에 끊겨요</td><td>나레이션이 짧으면 영상도 그만큼만</td><td class="s"><b>빈 클립 + 클립 합치기</b> (크레딧 0)</td><td class="go">영상 길이 늘리기 ①②</td></tr>
     <tr><td class="p">합쳤더니 뒷부분이 검은 화면</td><td>영상이 문장 부분에만 걸려 있어요</td><td class="s">영상 아이콘 → <b>현재 클립으로</b></td><td class="go">영상 길이 늘리기 ②</td></tr>
