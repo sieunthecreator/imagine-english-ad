@@ -125,10 +125,12 @@ table.frame{padding:0;background:var(--cream)}
 .worry .g2c{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
 .worry .card h3{font-size:24px;margin:6px 0 6px}.worry .card p{font-size:19px;line-height:1.5}
 .worry .num{display:inline-block;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;text-align:center;line-height:34px;font-weight:800}
+.worry.solo{justify-content:center;align-items:center;flex:1}.worry.solo .g2c{flex:0 1 1240px;gap:24px}.worry.solo .card{padding:30px 34px;text-align:center}.worry.solo .card h3{font-size:32px;margin:10px 0 10px;justify-content:center}.worry.solo .card p{font-size:24px}.worry.solo .num{width:44px;height:44px;line-height:44px;font-size:22px}
 .vals{width:100%;border-collapse:collapse;font-size:19px;table-layout:fixed}
 .vals td{word-break:keep-all}
 .vals th,.vals td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.45}
 .vals th{font-size:16px;color:var(--muted)}.vals td.w{font-weight:800}.vals td.v b{color:var(--good)}.vals td.e{color:var(--ink);font-size:17px}
+.vals.vbig{font-size:25px}.vals.vbig th{font-size:20px}.vals.vbig th,.vals.vbig td{padding:16px 16px}.vals.vbig td.e{font-size:22px}
 
 .fixhub{width:100%;border-collapse:collapse;font-size:19px}
 .fixhub th,.fixhub td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.42}
@@ -555,30 +557,28 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 <section class="slide" data-group="열기" data-title="수업 전 교사의 고민" data-min="0.5">
   <div class="top" data-in><span class="kicker">Before the lesson · <b>수업을 열기 전, 제가 붙잡은 고민</b></span></div>
   <h2 data-in>수업 전 <em>교사의 고민</em> 네 가지</h2>
-  <div class="worry">
+  <div class="worry solo">
     <div class="g2c">
       <div class="card" data-in><span class="num">1</span><h3>영어 쓰기의 벽</h3><p>빈 칸 앞에서 한 줄도 못 쓰고 멈추는 아이들</p></div>
       <div class="card" data-in><span class="num">2</span><h3>AI가 대신 해 주면 배움이 남을까</h3><p>결과물은 그럴듯한데 아이의 생각은 빠지는 수업</p></div>
       <div class="card" data-in><span class="num">3</span><h3>말하기가 두려운 아이</h3><p>소리 내어 영어를 말해 볼 기회가 거의 없는 아이</p></div>
       <div class="card" data-in><span class="num">4</span><h3>도구가 목적이 되는 위험</h3><p>영어 수업이 영상 만들기 기술 수업이 되어 버리는 것</p></div>
     </div>
-    <div data-in style="width:380px"><div class="frame"><img src="assets/vb-script-final.jpg" alt="할로윈 수업 AI 대본"></div><div class="cap">할로윈 수업 교사 시연 대본 — AI 초안 5문장을 교사가 7문장으로 고친 것</div></div>
   </div>
-  <div class="hl" data-in>할로윈 수업에서 아이들은 <b>읽고 말하기 · 프롬프트 입력 · Vrew 조작</b>에서 막혔어요. 이 경험이 오늘 설계의 출발점이에요.</div>
 </section>
 
 <section class="slide" data-group="열기" data-title="그래서 지킨 원칙" data-min="0.5">
   <div class="top" data-in><span class="kicker">Principles · <b>고민 → 원칙 → 증거</b></span></div>
   <h2 data-in>그래서 지킨 원칙 = <em>이 수업의 교육적 가치</em></h2>
-  <table class="vals" data-in>
-    <tr><th style="width:250px">고민</th><th>원칙 (교육적 가치)</th><th style="width:330px">오늘 교안 속 증거</th></tr>
+  <table class="vals vbig" data-in>
+    <tr><th style="width:290px">고민</th><th>원칙 (교육적 가치)</th><th style="width:400px">오늘 교안 속 증거</th></tr>
     <tr><td class="w">① 영어 쓰기의 벽</td><td class="v">한국어로 기획하고, 영어는 <b>읽고 · 고르고 · 고친다</b></td><td class="e">문장 틀 4줄 · 문장당 5단어</td></tr>
     <tr><td class="w">② AI 의존</td><td class="v"><b>AI는 제안하고, 결정은 아이가</b> (학습자 주체성)</td><td class="e">한 문장 이상 내 말로 고치기</td></tr>
     <tr><td class="w">③ 말하기 두려움</td><td class="v">내 문장을 <b>영어로 듣고 따라 말하기</b></td><td class="e">AI 목소리 · 영어 목소리 고르기</td></tr>
     <tr><td class="w">④ 도구가 목적</td><td class="v"><b>쓰기 → 읽기 → 듣기 → 말하기</b>를 한 흐름으로</td><td class="e">왜 Vrew였을까요?</td></tr>
     <tr><td class="w">＋ 융합</td><td class="v">프롬프트를 바꿔 보는 과정이 곧 <b>과학적 탐구</b></td><td class="e">왜 AI 대본 생성을 썼을까요?</td></tr>
   </table>
-  <div class="hl" data-in>오늘 모든 단계에서 이 원칙을 확인해 주세요 — <b>AI는 제안하고, 결정은 아이가.</b></div>
+  <div class="hl" data-in style="font-size:25px">오늘 모든 단계에서 이 원칙을 확인해 주세요 — <b>AI는 제안하고, 결정은 아이가.</b></div>
 </section>
 
 <section class="slide" data-group="열기" data-title="Vrew와 함께한 두 가지 수업" data-min="1">
