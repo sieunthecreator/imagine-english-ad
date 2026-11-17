@@ -206,6 +206,10 @@ table.frame{padding:0;background:var(--cream)}
 #pv .pvn:empty{display:none}#pv .pvn b{color:var(--aqua)}
 #pv .pvp{margin:0;overflow:auto;white-space:pre-wrap;font:500 19px/1.7 var(--sans);background:#26434b;color:#eef7f6;border-radius:16px;padding:18px 22px;max-height:470px}
 #pv mark,#pv .pvn mark{background:#f6d77a;color:#3a2a08;border-radius:4px;padding:0 3px}
+#pv .pvp{font-size:25px;line-height:1.65;max-height:560px}
+.pzoom{position:absolute;top:58px;right:14px;border:0;border-radius:999px;background:#eef7f6;color:#26434b;font:800 15px var(--sans);padding:6px 12px;cursor:pointer;z-index:3}
+.prompt.clip .pzoom{font-size:13px;padding:4px 9px;top:44px;right:10px}
+.ppbox .pzoom{top:62px;right:18px}
 #pv .pvf{display:flex;justify-content:flex-end}#pv .pvcopy{position:static;font-size:19px;padding:10px 22px}
 .pbtn{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:4;white-space:nowrap;border:0;border-radius:999px;cursor:pointer;font:800 14px var(--sans);padding:5px 12px;background:rgba(251,244,230,.94);color:#2a4a52;box-shadow:0 4px 10px rgba(0,0,0,.18)}
 .pbtn.sm{font-size:11px;padding:3px 7px;bottom:10px}.phone .pbtn{bottom:22px}
@@ -2588,6 +2592,13 @@ window.__render=render;
   pv.addEventListener('click',e=>{if(e.target===pv||e.target.classList.contains('pvx'))closePV()});
   addEventListener('keydown',e=>{if(!pv.classList.contains('on'))return;if(e.key==='Escape'){closePV();e.preventDefault();e.stopImmediatePropagation()}else if(['ArrowLeft','ArrowRight','PageUp','PageDown',' '].includes(e.key)){e.stopImmediatePropagation()}},true);
   document.querySelectorAll('.pvbtn').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();openPV(PM[b.dataset.pv])}));
+  // every prompt box: '크게' button + click on clipped text -> full prompt in the viewer
+  const fullText=box=>{const c=box.querySelector(':scope > .copy');if(c&&c.dataset.text)return c.dataset.text;const k=box.cloneNode(true);k.querySelectorAll('button').forEach(x=>x.remove());return k.innerText.trim()};
+  const openBox=box=>{const s=box.closest('.slide');openPV({m:(s&&s.dataset.title?s.dataset.title+' · ':'')+'프롬프트 전문',t:fullText(box)})};
+  document.querySelectorAll('.slide .prompt, .slide .ppbox').forEach(box=>{
+    const z=document.createElement('button');z.className='pzoom';z.textContent='⤢ 크게';z.title='프롬프트 전문 크게 보기';
+    z.addEventListener('click',e=>{e.stopPropagation();openBox(box)});box.appendChild(z);
+    if(box.classList.contains('clip')){box.style.cursor='zoom-in';box.addEventListener('click',e=>{if(e.target.closest('button'))return;openBox(box)})}});
   document.querySelectorAll('.slide img,.slide video').forEach(m=>{const s=m.getAttribute('src');if(!PM[s])return;const fr=m.closest('.frame');if(!fr||fr.querySelector(':scope>.pbtn'))return;
     const b=document.createElement('button');const v=m.tagName==='VIDEO';b.className='pbtn'+(fr.closest('.cgrid,.trio,.shots4,.shots6,.runs')||((parseFloat(fr.style.width)||parseFloat(fr.parentElement.style.width)||999)<140)?' sm':'');
     b.textContent=b.classList.contains('sm')?'프롬프트':(v?'영상 프롬프트':'이미지 프롬프트');b.title='이 '+(v?'영상':'그림')+'을 만든 프롬프트 보기';b.addEventListener('click',e=>{e.stopPropagation();openPV(PM[s])});fr.appendChild(b)});
