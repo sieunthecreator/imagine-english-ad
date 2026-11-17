@@ -422,6 +422,22 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 .big.mini{right:8px;top:8px;padding:2px 7px;font-size:12px;opacity:0;transition:opacity .2s}
 .frame:hover>.big.mini{opacity:.9}
 
+
+/* 자료집 목차 */
+.rt-lbl{margin:6px 0 12px;font-size:19px;color:var(--sub)}.rt-lbl b{color:var(--coral);font-size:21px;margin-right:10px}
+.rt-tiles{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+.rt-tile{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);transition:transform .2s}
+.rt-tile:hover{transform:translateY(-6px)}
+.rt-img{position:relative;display:block;aspect-ratio:3/4;border-radius:18px;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 24px rgba(36,64,74,.18)}
+.rt-img img{width:100%;height:100%;object-fit:cover;display:block}
+.rt-img i{position:absolute;left:10px;top:10px;width:36px;height:36px;border-radius:50%;background:rgba(255,250,242,.94);color:var(--coral);font:800 21px/36px var(--sans);text-align:center;font-style:normal}
+.rt-tile b{margin-top:10px;font-size:20px;line-height:1.25}.rt-tile small{font-size:15px;color:var(--sub);margin-top:2px}
+.rt-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.rt-col{background:rgba(255,250,242,.82);border-radius:18px;padding:14px 20px 10px;border-top:5px solid var(--gold2)}
+.rt-col h4{font-size:16px;letter-spacing:.06em;color:var(--gold);margin:0 0 4px}
+.rt-col a{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink);font-size:19px;font-weight:700}
+.rt-col a:last-child{border-bottom:0}.rt-col a:hover span{color:var(--coral)}
+.rt-col .pg{font:600 15px var(--sans);color:var(--sub);font-style:normal}.rt-col .pg::before{content:"p."}
 </style>
 </head>
 <body>
@@ -1969,6 +1985,14 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   </div>
 </section>
 
+<section class="slide" data-group="프롬프트 정리집 · 같은 장면, 다른 모델" data-title="자료집 목차" data-min="0.25">
+  <div class="top" data-in><span class="kicker">Index · <b>자료집</b> · 누르면 그 장으로 바로 가요</span><span class="refbadge">📎 자료 · 발표 땐 건너뛰고 링크로</span></div>
+  <h2 data-in>필요한 곳만 <em>골라 보세요</em></h2>
+  <p class="rt-lbl" data-in><b>따라 해 보기</b> 프롬프트 · 설정 · 실제 화면 그대로</p>
+  <div class="rt-tiles" data-in><a class="rt-tile" data-go="따라 해 보기 ①" href="#"><span class="rt-img"><img src="assets/toc/strawberry-v2.jpg" alt=""><i>①</i></span><b>유리 딸기 ASMR</b><small>프롬프트 한 번</small></a><a class="rt-tile" data-go="따라 해 보기 ②" href="#"><span class="rt-img"><img src="assets/toc/cloud.jpg" alt=""><i>②</i></span><b>구름 찻주전자</b><small>이미지 → 영상 → 음악</small></a><a class="rt-tile" data-go="따라 해 보기 ③" href="#"><span class="rt-img"><img src="assets/toc/squish.jpg" alt=""><i>③</i></span><b>말랑 지구본</b><small>‘얼마나 크게’ 쓰기</small></a><a class="rt-tile" data-go="따라 해 보기 ④" href="#"><span class="rt-img"><img src="assets/toc/seoha.jpg" alt=""><i>④</i></span><b>꼬마 직원</b><small>사진 1장으로</small></a><a class="rt-tile" data-go="따라 해 보기 ⑤" href="#"><span class="rt-img"><img src="assets/toc/glasscook.jpg" alt=""><i>⑤</i></span><b>유리 요리 ASMR</b><small>같은 프롬프트, 두 모델</small></a><a class="rt-tile" data-go="따라 해 보기 ⑥ " href="#"><span class="rt-img"><img src="assets/toc/crochet-teacher.jpg" alt=""><i>⑥</i></span><b>뜨개 시니쌤</b><small>시작·종료 이미지</small></a><a class="rt-tile" data-go="따라 해 보기 ⑦" href="#"><span class="rt-img"><img src="assets/toc/glass-gemini.jpg" alt=""><i>⑦</i></span><b>Gemini → Vrew</b><small>그림은 무료로</small></a></div>
+  <div class="rt-cols" data-in><div class="rt-col"><h4>모델 고르기</h4><a data-go="이미지 모델 7종" href="#"><span>이미지 모델 7종</span><em class="pg"></em></a><a data-go="영상 모델 9종" href="#"><span>영상 모델 9종</span><em class="pg"></em></a><a data-go="디자인 컨셉 8종 · Gemini" href="#"><span>그림체 8종 · Gemini</span><em class="pg"></em></a></div><div class="rt-col"><h4>프롬프트 다듬기</h4><a data-go="짧은 한 줄 vs 공식" href="#"><span>짧은 한 줄 vs 공식</span><em class="pg"></em></a><a data-go="참고 이미지 넣는 법" href="#"><span>참고 이미지 넣는 법</span><em class="pg"></em></a><a data-go="프롬프트 양식 두 가지 방법" href="#"><span>프롬프트 양식 두 가지</span><em class="pg"></em></a></div><div class="rt-col"><h4>소리 · 모음</h4><a data-go="분위기별 영어 목소리" href="#"><span>분위기별 영어 목소리</span><em class="pg"></em></a><a data-go="교사 대표작" href="#"><span>교사 대표작</span><em class="pg"></em></a><a data-go="Gemini 이미지 모음집" href="#"><span>Gemini 이미지 모음집</span><em class="pg"></em></a></div></div>
+</section>
+
 <section class="slide" data-group="프롬프트 정리집 · 같은 장면, 다른 모델" data-title="교사 대표작" data-min="0.5">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Showcase · <b>교사 대표작</b> · Vrew 이미지(GPT Image 2.5 Sunburst) → 장면마다 AI 비디오(Veo 3.1 Fast) + AI 목소리</span><span class="refbadge">📎 자료 · 발표 땐 건너뛰고 링크로</span></div>
   <h2 data-in>같은 유리병, <em>두 가지 영상</em></h2>
@@ -2856,7 +2880,7 @@ window.__render=render;
     e.preventDefault();e.stopPropagation()},true);
   // agenda / overview links by slide title, with computed times
   document.querySelectorAll('[data-go]').forEach(a=>{const k=S.findIndex(x=>x.dataset.title===a.dataset.go||x.dataset.title.startsWith(a.dataset.go));if(k<0)return;a.setAttribute('href','#'+(k+1));
-    const tm=a.querySelector('.tm');if(tm)tm.textContent=S[k].dataset.start;
+    const tm=a.querySelector('.tm');if(tm)tm.textContent=S[k].dataset.start;const pg=a.querySelector('.pg');if(pg)pg.textContent=k+1;
     const mn=a.querySelector('.mn');if(mn){const g=S[k].dataset.group;let sum=0;S.forEach(x=>{if(x.dataset.group===g)sum+=parseFloat(x.dataset.min)});if(g.startsWith('Vrew 함께 만들기 ①'))sum=50;if(g.startsWith('수업에 가져가기'))S.forEach(x=>{if(x.dataset.group.startsWith('질의응답'))sum+=parseFloat(x.dataset.min)});mn.textContent=sum+'분'}});
   fromHash();
   S[cur].querySelectorAll('[data-in],.pop,.wallart .frame').forEach(e=>e.style.animation='none');
