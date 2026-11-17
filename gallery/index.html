@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>연수 결과 갤러리 · 내 상상을 영어로 팝니다</title>
+<link rel="icon" href="../assets/sini-wing-logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#24404a;--sub:#5b7179;--cream:#fffaf2;--line:#ecdfca;--coral:#e8735a;--coral2:#f4a08a;--warm:#c45a3c;--warmsoft:#fdeee8;--gold:#b8892e;--gold2:#e8c96b;--aqua:#2f8f93;--good:#2f8f6a;--goodsoft:#e2f4ec;--bg:#eaf4ef}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg) url(../assets/bg-room.jpg) center top/cover fixed;color:var(--ink);font-family:Pretendard,system-ui,sans-serif;line-height:1.5;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;background:rgba(234,244,239,.72);z-index:-1}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 80px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header img{width:46px;height:46px}
+.kicker{font:800 13px Pretendard;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+h1{font-family:"Gowun Batang",serif;font-size:clamp(28px,5vw,44px);line-height:1.2;margin:4px 0 0}
+h1 em{font-style:normal;color:var(--coral)}
+.lead{color:var(--sub);margin:10px 0 0;font-size:16px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{appearance:none;border:0;border-radius:999px;padding:12px 20px;font:700 16px Pretendard;cursor:pointer;background:var(--coral);color:#fff;box-shadow:0 6px 16px rgba(232,115,90,.25)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(36,64,74,.08);border:1px solid var(--line)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.panel{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:22px;box-shadow:0 10px 30px rgba(36,64,74,.08)}
+.panel h2{margin:0 0 4px;font-size:22px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.form label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15px}
+.form label span{font-weight:500;color:var(--sub);font-size:13px}
+.form input[type=text]{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:16px Pretendard;background:#fff;color:var(--ink)}
+.form .full{grid-column:1/-1}
+.drop{border:2px dashed var(--coral2);border-radius:16px;padding:18px;text-align:center;background:#fff;cursor:pointer;color:var(--sub)}
+.drop b{color:var(--warm)}
+.drop.has{border-style:solid;border-color:var(--good);background:var(--goodsoft);color:var(--ink)}
+.prog{height:10px;border-radius:999px;background:#f1e6d6;overflow:hidden;display:none;margin-top:12px}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--gold2));transition:width .2s}
+.msg{margin-top:10px;font-weight:700;min-height:1.5em}
+.msg.ok{color:var(--good)}.msg.err{color:var(--warm)}
+.tabs{display:flex;gap:8px;margin:30px 0 14px;flex-wrap:wrap;align-items:center}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font:700 15px Pretendard;color:var(--sub);cursor:pointer}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.count{margin-left:auto;color:var(--sub);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(36,64,74,.10);cursor:pointer;display:flex;flex-direction:column;transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.thumb{position:relative;aspect-ratio:9/16;background:#dfe9e4}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .play{position:absolute;inset:auto 10px 10px auto;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;font-size:16px;color:var(--coral)}
+.badge{position:absolute;left:10px;top:10px;background:var(--gold2);color:#3c2a08;font:800 12px Pretendard;border-radius:999px;padding:4px 10px}
+.meta{padding:10px 12px 14px}
+.meta .p{font-weight:800;font-size:16px}
+.meta .s{color:var(--ink);font-size:14px;margin-top:2px}
+.meta .n{color:var(--sub);font-size:13px;margin-top:6px}
+.empty{color:var(--sub);background:#fff;border-radius:16px;padding:28px;text-align:center}
+.modal{position:fixed;inset:0;background:rgba(20,32,36,.86);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal.on{display:flex}
+.modal .box{display:flex;gap:20px;align-items:center;max-width:960px;width:100%;justify-content:center;flex-wrap:wrap}
+.modal video{max-height:84vh;max-width:min(92vw,480px);border-radius:16px;background:#000}
+.modal .info{color:#fff;max-width:340px}
+.modal .info .p{font-size:24px;font-weight:800}
+.modal .info .s{font-size:18px;margin-top:6px}
+.modal .info .n{opacity:.75;margin-top:10px}
+.modal .x{position:absolute;top:14px;right:18px;background:#fff;border:0;border-radius:999px;width:44px;height:44px;font-size:20px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;display:none;z-index:60}
+@media (max-width:640px){.form{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../assets/sini-wing-logo.png" alt="">
+    <div>
+      <div class="kicker">Gallery · 연수 결과 모음</div>
+      <h1>내 상상을 영어로 <em>팝니다</em></h1>
+    </div>
+  </header>
+  <p class="lead">Vrew로 만든 광고 영상을 올리고, 다른 선생님 작품을 눌러서 크게 보세요. 글과 댓글은 <b>클래스보드</b>에 써요.</p>
+  <div class="bar">
+    <button class="btn" id="goUp">⬆ 내 영상 올리기</button>
+    <button class="btn ghost" id="copyLink">🔗 갤러리 링크 복사</button>
+  </div>
+
+  <section class="panel" id="up">
+    <h2>내 영상 올리기</h2>
+    <div style="color:var(--sub);font-size:14px">Vrew에서 <b>내보내기 → 영상(mp4)</b>으로 저장한 파일을 올려요. 50MB까지. 이름은 닉네임도 괜찮아요.</div>
+    <div class="form">
+      <label>닉네임<input type="text" id="nick" maxlength="20" placeholder="예: 시니쌤"></label>
+      <label>제품 이름<input type="text" id="prod" maxlength="30" placeholder="예: Snack Cup"></label>
+      <label class="full">내가 고른 영어 한 문장 <span>(뜻은 클래스보드에)</span><input type="text" id="sent" maxlength="100" placeholder="예: It can make ice cream."></label>
+      <div class="full"><div class="drop" id="drop" tabindex="0" role="button">🎬 여기를 눌러 <b>mp4 파일 고르기</b> (또는 끌어다 놓기)</div><input type="file" id="file" accept="video/mp4,video/quicktime,video/webm" hidden></div>
+      <label>입장 코드 <span>(강사가 알려 준 숫자)</span><input type="text" id="code" maxlength="10" inputmode="numeric" placeholder="숫자 4자리"></label>
+      <div style="display:flex;align-items:flex-end"><button class="btn" id="send" style="width:100%">갤러리에 올리기</button></div>
+    </div>
+    <div class="prog" id="prog"><i></i></div>
+    <div class="msg" id="msg"></div>
+  </section>
+
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-f="all">전체</button>
+    <button class="tab" data-f="ex">교사 예시</button>
+    <button class="tab" data-f="t">연수생 작품</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"><div class="empty">불러오는 중…</div></div>
+</div>
+
+<div class="modal" id="modal"><button class="x" id="mx" aria-label="닫기">✕</button><div class="box"><video id="mv" controls playsinline></video><div class="info"><div class="p" id="mp"></div><div class="s" id="ms"></div><div class="n" id="mn"></div></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SB_URL = 'https://stdgfkyxgpwwvvzrswjo.supabase.co';
+const SB_KEY = 'sb_publishable_BqM3aUr4oDYdZP7ym7H6cg_6Uuk15_2';
+const BUCKET = 'gallery';
+const CODE = '1118';
+const $ = id => document.getElementById(id);
+const H = {apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY};
+const pub = p => `${SB_URL}/storage/v1/object/public/${BUCKET}/${p.split('/').map(encodeURIComponent).join('/')}`;
+let rows = [], filter = 'all', file = null;
+
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2600)}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+async function load(){
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/videos?select=id,created_at,nickname,product,sentence,path,thumb,is_example&order=is_example.desc,created_at.desc`,{headers:H,cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
+    rows = await r.json(); render();
+  }catch(e){ if(!rows.length) $('grid').innerHTML='<div class="empty">갤러리를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요.</div>'; }
+}
+function render(){
+  const list = rows.filter(r => filter==='all' || (filter==='ex' ? r.is_example : !r.is_example));
+  const t = rows.filter(r=>!r.is_example).length, ex = rows.length - t;
+  $('count').textContent = `교사 예시 ${ex} · 연수생 작품 ${t}`;
+  if(!list.length){ $('grid').innerHTML = `<div class="empty">${filter==='ex'?'교사 예시가 아직 없어요.':'아직 올라온 작품이 없어요. 첫 번째로 올려 주세요!'}</div>`; return; }
+  $('grid').innerHTML = list.map(r => `<div class="card" data-id="${r.id}"><div class="thumb">${r.thumb?`<img src="${pub(r.thumb)}" alt="" loading="lazy">`:''}${r.is_example?'<span class="badge">교사 예시</span>':''}<span class="play">▶</span></div><div class="meta"><div class="p">${esc(r.product)||'제목 없음'}</div><div class="s">${esc(r.sentence)}</div><div class="n">${esc(r.nickname)}</div></div></div>`).join('');
+}
+$('grid').addEventListener('click', e => {
+  const c = e.target.closest('.card'); if(!c) return;
+  const r = rows.find(x => String(x.id) === c.dataset.id); if(!r) return;
+  $('mp').textContent = r.product || ''; $('ms').textContent = r.sentence || ''; $('mn').textContent = (r.is_example?'교사 예시 · ':'') + (r.nickname||'');
+  $('mv').src = pub(r.path); $('modal').classList.add('on'); $('mv').play().catch(()=>{});
+});
+function closeM(){ $('mv').pause(); $('mv').removeAttribute('src'); $('mv').load(); $('modal').classList.remove('on'); }
+$('mx').onclick = closeM; $('modal').addEventListener('click', e => { if(e.target.id==='modal') closeM(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeM(); });
+$('tabs').addEventListener('click', e => { const b=e.target.closest('.tab'); if(!b) return; document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b)); filter=b.dataset.f; render(); });
+$('goUp').onclick = () => $('up').scrollIntoView({behavior:'smooth'});
+$('copyLink').onclick = async () => { try{ await navigator.clipboard.writeText(location.href.split('#')[0]); toast('갤러리 링크를 복사했어요'); }catch(e){ toast(location.href.split('#')[0]); } };
+
+function pick(f){
+  if(!f) return;
+  if(!/^video\//.test(f.type) && !/\.(mp4|mov|webm)$/i.test(f.name)){ msg('영상 파일(mp4)을 골라 주세요.','err'); return; }
+  if(f.size > 50*1024*1024){ msg('50MB보다 커요. Vrew에서 화질을 720p로 내보내 주세요.','err'); return; }
+  file = f; $('drop').classList.add('has'); $('drop').innerHTML = `✅ <b>${esc(f.name)}</b> · ${(f.size/1048576).toFixed(1)}MB (다시 누르면 바꾸기)`; msg('');
+}
+$('drop').onclick = () => $('file').click();
+$('drop').onkeydown = e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); $('file').click(); } };
+$('file').onchange = e => pick(e.target.files[0]);
+['dragover','dragenter'].forEach(t=>$('drop').addEventListener(t,e=>{e.preventDefault();}));
+$('drop').addEventListener('drop', e => { e.preventDefault(); pick(e.dataTransfer.files[0]); });
+function msg(t,k){ $('msg').textContent=t; $('msg').className='msg'+(k?' '+k:''); }
+
+function thumbOf(f){
+  return new Promise(res => {
+    const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto';
+    const url = URL.createObjectURL(f); v.src = url; let done = false;
+    const fin = b => { if(done) return; done = true; URL.revokeObjectURL(url); res(b); };
+    v.onloadedmetadata = () => { v.currentTime = Math.min(1.2, (v.duration||2)/3); };
+    v.onseeked = () => { try{ const w=360, h=Math.round(w*v.videoHeight/v.videoWidth)||640; const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(v,0,0,w,h); c.toBlob(b=>fin(b),'image/jpeg',.82); }catch(e){ fin(null); } };
+    v.onerror = () => fin(null); setTimeout(()=>fin(null), 12000);
+  });
+}
+function put(path, blob, type, onp){
+  return new Promise((ok, no) => {
+    const x = new XMLHttpRequest();
+    x.open('POST', `${SB_URL}/storage/v1/object/${BUCKET}/${path}`);
+    x.setRequestHeader('apikey', SB_KEY); x.setRequestHeader('Authorization', 'Bearer ' + SB_KEY);
+    x.setRequestHeader('Content-Type', type); x.setRequestHeader('x-upsert', 'false');
+    if(onp) x.upload.onprogress = e => e.lengthComputable && onp(e.loaded/e.total);
+    x.onload = () => x.status < 300 ? ok() : no(new Error(x.status + ' ' + x.responseText));
+    x.onerror = () => no(new Error('network')); x.send(blob);
+  });
+}
+$('send').onclick = async () => {
+  const nick=$('nick').value.trim(), prod=$('prod').value.trim(), sent=$('sent').value.trim(), code=$('code').value.trim();
+  if(!nick){ msg('닉네임을 적어 주세요.','err'); return; }
+  if(!prod){ msg('제품 이름을 적어 주세요.','err'); return; }
+  if(!file){ msg('올릴 mp4 파일을 골라 주세요.','err'); return; }
+  if(code !== CODE){ msg('입장 코드가 달라요. 강사가 알려 준 숫자를 넣어 주세요.','err'); return; }
+  $('send').disabled = true; $('prog').style.display='block'; const bar=$('prog').firstElementChild; bar.style.width='3%';
+  try{
+    msg('준비하는 중…');
+    const id = Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+    const ext = (file.name.match(/\.(mp4|mov|webm)$/i)||['','mp4'])[1].toLowerCase();
+    const tb = await thumbOf(file); let thumb = null;
+    if(tb){ thumb = `u/${id}.jpg`; await put(thumb, tb, 'image/jpeg'); }
+    msg('올리는 중… 창을 닫지 마세요');
+    const vpath = `u/${id}.${ext}`;
+    await put(vpath, file, file.type || 'video/mp4', p => bar.style.width = (5 + p*90) + '%');
+    const r = await fetch(`${SB_URL}/rest/v1/videos`, {method:'POST', headers:{...H,'Content-Type':'application/json',Prefer:'return=minimal'}, body: JSON.stringify({nickname:nick, product:prod, sentence:sent, path:vpath, thumb})});
+    if(!r.ok) throw new Error('row ' + r.status);
+    bar.style.width='100%'; msg('올라갔어요! 아래 갤러리에서 확인해 보세요.','ok'); toast('🎉 갤러리에 올라갔어요');
+    file=null; $('file').value=''; $('drop').classList.remove('has'); $('drop').innerHTML='🎬 여기를 눌러 <b>mp4 파일 고르기</b> (또는 끌어다 놓기)';
+    $('sent').value=''; $('prod').value='';
+    await load(); document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.f==='t')); filter='t'; render();
+    $('tabs').scrollIntoView({behavior:'smooth'});
+  }catch(e){ msg('올리지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요. ('+e.message.slice(0,60)+')','err'); }
+  finally{ $('send').disabled=false; setTimeout(()=>{$('prog').style.display='none'; bar.style.width='0';},1500); }
+};
+load(); setInterval(() => { if(!$('modal').classList.contains('on')) load(); }, 30000);
+</script>
+</body>
+</html>
