@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <title>상상을 영어로 팝니다</title>
 <meta name="description" content="아이디어 기획부터 영상 한 편까지, Vrew와 클래스보드로 만드는 초등 영어 광고 수업 · T셀파 라이브 2026. 11. 18. (수)">
 <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#123238;overflow:hidden}
 body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
-#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;overflow:hidden;background:#bfe5e3;transform-origin:center center}
+#stage{position:fixed;left:50%;top:50%;width:1600px;height:900px;overflow:hidden;background:#bfe5e3;transform-origin:center center}
 #backdrop{position:fixed;inset:0;z-index:0;overflow:hidden;background:#cdeceb}
 #backdrop .bg{position:absolute;inset:-40px;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease;filter:blur(22px) saturate(1.05)}
 #backdrop .bg-room{background-image:url(assets/bg-room.jpg)}#backdrop .bg-cover{background-image:url(assets/bg-cover.jpg)}#backdrop .bg-dusk{background-image:url(assets/bg-dusk.jpg)}
@@ -2663,6 +2663,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     const dusk=s.classList.contains('dusk'),big=(s.classList.contains('sec')||s.classList.contains('cover'))&&!s.querySelector('.wallart');
     room.className=dusk?'on-dusk':(big?'on-cover plain':'on-room'+((s.classList.contains('sec')||s.classList.contains('cover'))?' plain':''));document.getElementById('backdrop').className=room.className;
     document.getElementById('deco').classList.toggle('off',big&&!dusk);
+    s.querySelectorAll('video').forEach(v=>{if(v.error){try{v.load()}catch(e){}}});
     s.querySelectorAll('video[data-auto]').forEach(v=>{v.muted=true;const p=v.play();if(p)p.catch(()=>{})});
     fitSlide(s);
     clearTimeout(window.__fin);window.__fin=setTimeout(()=>{s.getAnimations({subtree:true}).forEach(a=>{if(['rise','pop','hang'].includes(a.animationName)&&a.playState!=='finished'){try{a.finish()}catch(e){}}})},2400);
@@ -2768,7 +2769,9 @@ window.__render=render;
     pwRender();}
   presBtn.onclick=openPW;window.__pw=()=>PW;
 
-  document.getElementById('fsBtn').onclick=()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
+  {const fb=document.getElementById('fsBtn'),de=document.documentElement,req=de.requestFullscreen||de.webkitRequestFullscreen,ex=document.exitFullscreen||document.webkitExitFullscreen;
+    if(!req)fb.style.display='none';
+    fb.onclick=()=>{try{const on=document.fullscreenElement||document.webkitFullscreenElement;const r=on?ex.call(document):req.call(de);if(r&&r.catch)r.catch(()=>{})}catch(e){}}}
   addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||document.getElementById('lb').classList.contains('on')||document.getElementById('pv').classList.contains('on'))return;const k=e.key;
     if(['ArrowRight','PageDown',' '].includes(k)){e.preventDefault();go(cur+1)}else if(['ArrowLeft','PageUp'].includes(k)){e.preventDefault();go(cur-1)}
     else if(k==='Home')go(0);else if(k==='End')go(S.length-1);else if(k==='t'||k==='T')toc.classList.toggle('on');else if(false)notes.classList.toggle('on');else if(k==='p'||k==='P')openPW();else if(k==='Escape'){toc.classList.remove('on');notes.classList.remove('on')}else if(k==='f'||k==='F')document.getElementById('fsBtn').click();});
@@ -2874,7 +2877,7 @@ window.__render=render;
   document.querySelectorAll('.hwgo').forEach(el=>{const pg=el.dataset.hw.split(',');const b=document.createElement('span');b.className='see';b.textContent=el.dataset.see||('교안 보기 ▸'+(pg.length>1?' '+pg.length+'장':''));(el.tagName==='TR'?el.lastElementChild:el).appendChild(b);
     el.addEventListener('click',e=>{e.stopPropagation();const box=el.closest('.slide').querySelector('.hwpg');window.__openSet(pg.map(n=>box.querySelector('img[data-hwp="'+n+'"]')).filter(Boolean))})});
   function closeLB(){lbv.pause();if(document.fullscreenElement===lb)document.exitFullscreen();lb.classList.remove('on')}
-  function fsLB(){if(document.fullscreenElement===lb)document.exitFullscreen();else lb.requestFullscreen&&lb.requestFullscreen()}
+  function fsLB(){try{const on=document.fullscreenElement||document.webkitFullscreenElement;if(on===lb){(document.exitFullscreen||document.webkitExitFullscreen).call(document)}else{const q=lb.requestFullscreen||lb.webkitRequestFullscreen;if(q){const r=q.call(lb);if(r&&r.catch)r.catch(()=>{})}else{const v=lb.querySelector('video');if(v&&v.webkitEnterFullscreen&&v.offsetParent)v.webkitEnterFullscreen()}}}catch(e){}}
   lb.addEventListener('click',e=>{const c=e.target.classList;if(e.target===lb||c.contains('x'))closeLB();else if(c.contains('lbp'))stepLB(-1);else if(c.contains('lbq'))stepLB(1);else if(c.contains('fs'))fsLB()});
   lbi.addEventListener('dblclick',fsLB);
   document.querySelectorAll('.slide img,.slide video').forEach(m=>{if(!okMedia(m))return;const fr=m.closest('.frame');
