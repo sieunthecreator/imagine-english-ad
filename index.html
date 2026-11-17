@@ -1229,7 +1229,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <div data-in style="width:480px"><div class="frame"><img src="assets/ai-ready.jpg" alt=""></div><div class="cap">프로젝트가 준비되면 <b>AI 비디오로 만들기</b> → 모델과 금액 확인</div></div>
     <ol class="steps f1" style="gap:10px">
       <li data-in><span>장면마다 움직이는 영상 4개 생성</span></li>
-      <li data-in><span>영상이 <b>목소리 길이만큼만</b> 나오면 에이전트에게<br><span class="sub" style="font-size:20px">“나레이션 뒤에 무음 구간을 넣어 영상이 다 재생되게&nbsp;해&nbsp;줘”</span></span></li>
+      <li data-in><span>영상이 <b>목소리 길이만큼만</b> 나오면 에이전트에게<br><span class="sub" style="font-size:20px">“각 클립 길이를 그 AI 영상 길이만큼 늘려 줘. 나레이션 뒤에 무음을 넣어서”</span></span></li>
       <li data-in><span>영상 아래 시간 <b>20초 안팎</b> 확인 <span class="sub">(확장 30초까지)</span></span></li>
       <li data-in><span>내보내기 → mp4 → <b>패들렛</b></span></li>
     </ol>
@@ -1243,7 +1243,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <h2 data-in>영상이 짧게 잘리면 <em>에이전트에게 부탁</em></h2>
   <div class="row" style="gap:26px">
     <div class="col f1" style="gap:12px">
-      <div data-in><div class="prompt" style="padding-right:96px"><button class="copy">복사</button>지금 동영상은 3초짜리로 만들었는데 클립이 너무 짧아서 영상이 충분히 안 보여. 나레이션 뒤에 무음 구간을 좀 넣어서 만들어진 영상이 다 재생되게 하고 싶어.</div></div>
+      <div data-in><div class="prompt" style="padding-right:96px"><button class="copy">복사</button>클립마다 들어 있는 AI 영상이 끝까지 재생되도록, 각 클립의 길이를 그 AI 영상 길이만큼 늘려 줘. 나레이션 뒤에 무음 구간을 넣어서 늘려 줘.</div><p class="small" style="margin-top:6px">교사 예시작 때 보낸 글: “지금 동영상은 3초짜리로 만들었는데 … 나레이션 뒤에 무음 구간을 좀 넣어서 만들어진 영상이 다 재생되게 하고 싶어.” → 오른쪽 대답</p></div>
       <div class="card sun" data-in><p style="font-size:19px">재생해 보고 <b>너무 빨리 넘어갈 때만</b> 보내요. 에이전트는 <b>크레딧이 들어요</b>.</p></div>
     </div>
     <div class="col" style="width:560px;gap:10px">
@@ -1699,7 +1699,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <div class="col f1" style="gap:16px">
       <div class="card" data-in><h3>“5초 영상 4개를 붙였는데 합쳐서 5초가 돼요”</h3><p>목소리 클립이 짧으면 그 위의 영상도 <b>클립 길이만큼만</b> 재생돼요.</p></div>
       <div class="card good" data-in><h3>해결 ① 메뉴로</h3><p>생성 영상 선택 → <b>⋮ → 새 클립으로 변경</b></p></div>
-      <div class="card good" data-in><h3>해결 ② 에이전트에게</h3><p>“나레이션 뒤에 <b>무음 구간</b>을 넣어 줘” <span class="sub">(크레딧 사용 · 남은 시간은 정지 화면)</span></p></div>
+      <div class="card good" data-in><h3>해결 ② 에이전트에게</h3><p>“각 클립 길이를 그 AI 영상 길이만큼 늘려 줘. 나레이션 뒤에 <b>무음 구간</b>을 넣어서” <span class="sub">(크레딧 사용 · 영상보다 길게 늘리면 남는 시간은 마지막 장면이 멈춰 있어요)</span></p></div>
       <div class="card good" data-in><h3>해결 ③ 빈 클립 + 클립 합치기 <span class="sub">(크레딧 0 · 영상이 끝까지 움직여요)</span></h3><p>다음 장에서 화면으로 하나씩 →</p></div>
     </div>
   </div>
