@@ -438,6 +438,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 .rt-col a{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink);font-size:19px;font-weight:700}
 .rt-col a:last-child{border-bottom:0}.rt-col a:hover span{color:var(--coral)}
 .rt-col .pg{font:600 15px var(--sans);color:var(--sub);font-style:normal}.rt-col .pg::before{content:"p."}
+.srcnote{font-size:18px;line-height:1.6;color:var(--sub);margin-top:26px}.srcnote b{color:var(--coral)}.rt-src{margin-top:18px;text-align:center}
 </style>
 </head>
 <body>
@@ -1991,6 +1992,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <p class="rt-lbl" data-in><b>따라 해 보기</b> 프롬프트 · 설정 · 실제 화면 그대로</p>
   <div class="rt-tiles" data-in><a class="rt-tile" data-go="따라 해 보기 ①" href="#"><span class="rt-img"><img src="assets/toc/strawberry-v2.jpg" alt=""><i>①</i></span><b>유리 딸기 ASMR</b><small>프롬프트 한 번</small></a><a class="rt-tile" data-go="따라 해 보기 ②" href="#"><span class="rt-img"><img src="assets/toc/cloud.jpg" alt=""><i>②</i></span><b>구름 찻주전자</b><small>이미지 → 영상 → 음악</small></a><a class="rt-tile" data-go="따라 해 보기 ③" href="#"><span class="rt-img"><img src="assets/toc/squish.jpg" alt=""><i>③</i></span><b>말랑 지구본</b><small>‘얼마나 크게’ 쓰기</small></a><a class="rt-tile" data-go="따라 해 보기 ④" href="#"><span class="rt-img"><img src="assets/toc/seoha.jpg" alt=""><i>④</i></span><b>꼬마 직원</b><small>사진 1장으로</small></a><a class="rt-tile" data-go="따라 해 보기 ⑤" href="#"><span class="rt-img"><img src="assets/toc/glasscook.jpg" alt=""><i>⑤</i></span><b>유리 요리 ASMR</b><small>같은 프롬프트, 두 모델</small></a><a class="rt-tile" data-go="따라 해 보기 ⑥ " href="#"><span class="rt-img"><img src="assets/toc/crochet-teacher.jpg" alt=""><i>⑥</i></span><b>뜨개 시니쌤</b><small>시작·종료 이미지</small></a><a class="rt-tile" data-go="따라 해 보기 ⑦" href="#"><span class="rt-img"><img src="assets/toc/glass-gemini.jpg" alt=""><i>⑦</i></span><b>Gemini → Vrew</b><small>그림은 무료로</small></a></div>
   <div class="rt-cols" data-in><div class="rt-col"><h4>모델 고르기</h4><a data-go="이미지 모델 7종" href="#"><span>이미지 모델 7종</span><em class="pg"></em></a><a data-go="영상 모델 9종" href="#"><span>영상 모델 9종</span><em class="pg"></em></a><a data-go="디자인 컨셉 8종 · Gemini" href="#"><span>그림체 8종 · Gemini</span><em class="pg"></em></a></div><div class="rt-col"><h4>프롬프트 다듬기</h4><a data-go="짧은 한 줄 vs 공식" href="#"><span>짧은 한 줄 vs 공식</span><em class="pg"></em></a><a data-go="참고 이미지 넣는 법" href="#"><span>참고 이미지 넣는 법</span><em class="pg"></em></a><a data-go="프롬프트 양식 두 가지 방법" href="#"><span>프롬프트 양식 두 가지</span><em class="pg"></em></a></div><div class="rt-col"><h4>소리 · 모음</h4><a data-go="분위기별 영어 목소리" href="#"><span>분위기별 영어 목소리</span><em class="pg"></em></a><a data-go="교사 대표작" href="#"><span>교사 대표작</span><em class="pg"></em></a><a data-go="Gemini 이미지 모음집" href="#"><span>Gemini 이미지 모음집</span><em class="pg"></em></a></div></div>
+  <p class="srcnote rt-src" data-in>📌 프롬프트·영상·이미지에는 출처 정보가 들어 있어요 · 수업에는 자유롭게, 출처 <b>‘시니쌤’</b>을 남겨 주세요</p>
 </section>
 
 <section class="slide" data-group="프롬프트 정리집 · 같은 장면, 다른 모델" data-title="교사 대표작" data-min="0.5">
@@ -2568,6 +2570,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <div class="eyebrow" data-in>Thank you</div>
     <h1 data-in>상상은 아이가,<br><em>영어는</em> 함께</h1>
     <p class="lead" data-in>오늘 만든 광고 1편이 다음 수업의 예시작이 돼요</p>
+    <p class="srcnote" data-in>교안 속 프롬프트·영상·이미지에는 출처 정보가 들어 있어요.<br>수업에는 자유롭게 쓰시고, 출처 <b>‘시니쌤’</b>을 남겨 주세요 🙂</p>
   </div>
   <div class="wallart">
     <div class="phone"><div class="frame"><video src="assets/ex-umbrella.mp4" data-auto muted loop playsinline preload="metadata"></video></div></div>
@@ -2806,7 +2809,10 @@ window.__render=render;
     draw();});
   const EX={cup:{obj:'컵',look:'하얗고 작음',power:'아이스크림을 만든다'},bottle:{obj:'유리병',look:'투명하고 금빛 뚜껑이 달림',power:'뚜껑을 열면 빛나는 금붕어들이 날아오른다'}};
   document.querySelectorAll('.exbtn').forEach(b=>b.onclick=()=>{const v=EX[b.dataset.ex];Object.assign(st,v);document.querySelectorAll('input[data-k]').forEach(i=>{if(!i.closest('.slide')._own)i.value=v[i.dataset.k]});S.forEach(x=>{if(x._draw&&!x._own)x._draw()})});
-  document.addEventListener('click',e=>{const b=e.target.closest('.copy');if(!b)return;const p=b.parentElement;const txt=b.dataset.text||p.innerText.replace(/^복사(됨!)?\s*/,'');
+  // 출처 꼬리표: 눈에 안 보이는 유니코드 태그 문자로 프롬프트 끝에 붙어요 (AI에 넣으면 읽혀요)
+  const SRC_TAG=String.fromCodePoint(0xE0001)+[...' Source: Sini-ssaem (Korean teacher) | prompt from the Vrew AI English ad training deck, 2026 | please credit Sini-ssaem | https://sieunthecreator.github.io/imagine-english-ad/'].map(c=>String.fromCodePoint(0xE0000+c.charCodeAt(0))).join('')+String.fromCodePoint(0xE007F);
+  document.addEventListener('copy',e=>{const sel=getSelection();if(!sel||!sel.rangeCount||sel.isCollapsed)return;const n=sel.anchorNode;const el=n&&(n.nodeType===1?n:n.parentElement);if(!el||!el.closest('.prompt,.ppbox,#pv'))return;try{e.clipboardData.setData('text/plain',sel.toString()+SRC_TAG);e.preventDefault()}catch(_){}});
+  document.addEventListener('click',e=>{const b=e.target.closest('.copy');if(!b)return;const p=b.parentElement;let txt=b.dataset.text||p.innerText.replace(/^복사(됨!)?\s*/,'');if(b.closest('.prompt,.ppbox,#pv')||b.dataset.text)txt=txt.replace(/\s+$/,'')+SRC_TAG;
     const lab=b.dataset.label||'복사';const ok=()=>{b.textContent='복사됨!';b.classList.add('done');setTimeout(()=>{b.textContent=lab;b.classList.remove('done')},1600)};
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(ok,()=>{fallback(txt);ok()});else{fallback(txt);ok()}});
   function fallback(txt){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove()}
