@@ -2577,6 +2577,14 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   let cur=0;
   function fit(){const k=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${k})`}
   addEventListener('resize',fit);fit();
+  addEventListener('orientationchange',()=>setTimeout(fit,200));
+  (function(){let sx=0,sy=0,on=false;
+    stage.addEventListener('touchstart',e=>{if(e.touches.length!==1){on=false;return}on=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+    stage.addEventListener('touchend',e=>{if(!on)return;on=false;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+      if(Math.abs(dx)<60||Math.abs(dx)<Math.abs(dy)*1.5)return;
+      if(document.querySelector('#lb.on,#pv.on,#gg.on'))return;
+      if(e.target.closest('video,.prompt,.ppbox,table,textarea,input'))return;
+      go(cur+(dx<0?1:-1))},{passive:true})})();
   let t=19*60;const fmt=m=>{m=Math.round(m);const h=Math.floor(m/60),mm=m%60;return h+':'+String(mm).padStart(2,'0')};
   S.forEach(s=>{const m=parseFloat(s.dataset.min||0);s.dataset.start=fmt(t);s.dataset.label=fmt(t)+' · '+m+'분';t+=m});
   window.__END=fmt(t);
@@ -2645,10 +2653,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   document.getElementById('noteBtn').onclick=()=>notes.classList.toggle('on');
   // ---- 클래스보드 제출: 글 틀 복사 후 새 탭 ----
   const CB_URL='https://www.clboard.co.kr/student/944376';
-  const CB_TPL='제목: (제품 이름)
-내가 고른 영어 한 문장: 
-뜻: 
-영상: 연수 갤러리에 올렸어요';
+  const CB_TPL='제목: (제품 이름)\n내가 고른 영어 한 문장: \n뜻: \n영상: 연수 갤러리에 올렸어요';
   function copyText(x){try{if(navigator.clipboard&&isSecureContext)return navigator.clipboard.writeText(x)}catch(e){}
     const a=document.createElement('textarea');a.value=x;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();return Promise.resolve()}
   const cbCopy=document.getElementById('cbCopy');
