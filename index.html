@@ -449,6 +449,11 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 .stychip{font:700 16px var(--sans);padding:7px 12px;border-radius:999px;border:2px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer}
 .stychip:hover{border-color:var(--coral)}
 .stychip.on{background:var(--coral);border-color:var(--coral);color:#fff}
+
+/* 확대 창 · 그림은 선택(파란 칠) 안 되게 */
+#lb,#lb *{-webkit-user-select:none;user-select:none}
+#lb ::selection,.frame img::selection,.frame::selection{background:transparent}
+.frame img{-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
@@ -2991,11 +2996,11 @@ window.__render=render;
   function showLB(){const m=L[li];lbv.pause();const v=m.tagName==='VIDEO';lbv.style.display=v?'block':'none';lbi.style.display=v?'none':'block';
     if(v){lbv.src=m.getAttribute('src');lbv.muted=false;lbv.currentTime=0;const p=lbv.play();if(p)p.catch(()=>{lbv.muted=true;lbv.play()})}else{lbv.removeAttribute('src');lbi.src=m.dataset.full||m.getAttribute('src')}
     lbc.textContent=capOf(m);{const pb=lb.querySelector('.lbp2'),ps=PM[m.getAttribute('src')];pb.style.display=ps?'':'none';pb.onclick=ps?(e=>{e.stopPropagation();openPV(ps)}):null;pb.textContent=v?'영상 프롬프트 보기':'이미지 프롬프트 보기'}lbn.textContent=L.length>1?(li+1)+' / '+L.length:'';lb.classList.toggle('multi',L.length>1)}
-  function openLB(m){L=media(m);li=Math.max(0,L.indexOf(m));lb.classList.add('on');showLB()}
+  function openLB(m){L=media(m);li=Math.max(0,L.indexOf(m));try{getSelection().removeAllRanges()}catch(e){}lb.classList.add('on');showLB()}
   function stepLB(d){if(L.length<2)return;li=(li+d+L.length)%L.length;showLB()}
 
   // 할로윈 수업 소개: 단계를 누르면 실제 할로윈 교안 페이지를 크게
-  window.__openSet=(arr)=>{if(!arr.length)return;L=arr;li=0;lb.classList.add('on');showLB()};
+  window.__openSet=(arr)=>{if(!arr.length)return;L=arr;li=0;try{getSelection().removeAllRanges()}catch(e){}lb.classList.add('on');showLB()};
   document.querySelectorAll('.hwgo').forEach(el=>{const pg=el.dataset.hw.split(',');const b=document.createElement('span');b.className='see';b.textContent=el.dataset.see||('교안 보기 ▸'+(pg.length>1?' '+pg.length+'장':''));(el.tagName==='TR'?el.lastElementChild:el).appendChild(b);
     el.addEventListener('click',e=>{e.stopPropagation();const box=el.closest('.slide').querySelector('.hwpg');window.__openSet(pg.map(n=>box.querySelector('img[data-hwp="'+n+'"]')).filter(Boolean))})});
   function closeLB(){lbv.pause();if(document.fullscreenElement===lb)document.exitFullscreen();lb.classList.remove('on')}
