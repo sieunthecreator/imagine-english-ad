@@ -92,8 +92,7 @@ h1 em{font-style:normal;color:var(--coral)}
       <label>제품 이름<input type="text" id="prod" maxlength="30" placeholder="예: Snack Cup"></label>
       <label class="full">내가 고른 영어 한 문장 <span>(뜻은 클래스보드에)</span><input type="text" id="sent" maxlength="100" placeholder="예: It can make ice cream."></label>
       <div class="full"><div class="drop" id="drop" tabindex="0" role="button">🎬 여기를 눌러 <b>mp4 파일 고르기</b> (또는 끌어다 놓기)</div><input type="file" id="file" accept="video/mp4,video/quicktime,video/webm" hidden></div>
-      <label>입장 코드 <span>(강사가 알려 준 숫자)</span><input type="text" id="code" maxlength="10" inputmode="numeric" placeholder="숫자 4자리"></label>
-      <div style="display:flex;align-items:flex-end"><button class="btn" id="send" style="width:100%">갤러리에 올리기</button></div>
+      <div class="full" style="display:flex"><button class="btn" id="send" style="width:100%">갤러리에 올리기</button></div>
     </div>
     <div class="prog" id="prog"><i></i></div>
     <div class="msg" id="msg"></div>
@@ -115,7 +114,6 @@ h1 em{font-style:normal;color:var(--coral)}
 const SB_URL = 'https://stdgfkyxgpwwvvzrswjo.supabase.co';
 const SB_KEY = 'sb_publishable_BqM3aUr4oDYdZP7ym7H6cg_6Uuk15_2';
 const BUCKET = 'gallery';
-const CODE = '1118';
 const $ = id => document.getElementById(id);
 const H = {apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY};
 const pub = p => `${SB_URL}/storage/v1/object/public/${BUCKET}/${p.split('/').map(encodeURIComponent).join('/')}`;
@@ -186,11 +184,10 @@ function put(path, blob, type, onp){
   });
 }
 $('send').onclick = async () => {
-  const nick=$('nick').value.trim(), prod=$('prod').value.trim(), sent=$('sent').value.trim(), code=$('code').value.trim();
+  const nick=$('nick').value.trim(), prod=$('prod').value.trim(), sent=$('sent').value.trim();
   if(!nick){ msg('닉네임을 적어 주세요.','err'); return; }
   if(!prod){ msg('제품 이름을 적어 주세요.','err'); return; }
   if(!file){ msg('올릴 mp4 파일을 골라 주세요.','err'); return; }
-  if(code !== CODE){ msg('입장 코드가 달라요. 강사가 알려 준 숫자를 넣어 주세요.','err'); return; }
   $('send').disabled = true; $('prog').style.display='block'; const bar=$('prog').firstElementChild; bar.style.width='3%';
   try{
     msg('준비하는 중…');
