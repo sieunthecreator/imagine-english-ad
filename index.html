@@ -440,6 +440,15 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 .rt-col .pg{font:600 15px var(--sans);color:var(--sub);font-style:normal}.rt-col .pg::before{content:"p."}
 .srcnote{font-size:18px;line-height:1.6;color:var(--sub);margin-top:26px}.srcnote b{color:var(--coral)}.rt-src{margin-top:18px;text-align:center}
 #bar .cr{font-size:13px;color:var(--sub);white-space:nowrap;opacity:.85}
+
+/* 화면 캡처 안내 (번호 상자) */
+.gd .vsteps li{font-size:22px}
+.gd-arrow{font:800 64px/1 var(--sans);color:var(--coral)}
+.stybar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stybar b{font-size:17px;color:var(--ink);margin-right:4px}
+.stychip{font:700 16px var(--sans);padding:7px 12px;border-radius:999px;border:2px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer}
+.stychip:hover{border-color:var(--coral)}
+.stychip.on{background:var(--coral);border-color:var(--coral);color:#fff}
 </style>
 </head>
 <body>
@@ -1476,7 +1485,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <tr><td class="k">영상 (선택)</td><td><b>Gemini Omni 1.2 Flash</b> · 움직이고 싶은 장면만 · 시작 이미지 = 그 장면</td><td>4초 <b>140</b> · 5초 175</td></tr>
     <tr><td class="k">목소리</td><td>언어 필터 <b>English</b> → <b>▶ 미리 듣기</b> → 영어가 가장 자연스러운 목소리</td><td>애덤 100자당 1</td></tr>
     <tr><td class="k">고치기</td><td>AI 대본에서 <b>한 문장 이상</b> 내 말로 고치기 · 4문장 · 문장당 7단어 이내</td><td>—</td></tr>
-    <tr><td class="k">제출</td><td>내보내기 <b>mp4</b> → <b>연수 갤러리</b>에 영상 → <b>클래스보드</b>에 글 (91 · 96장 버튼)</td><td>—</td></tr>
+    <tr><td class="k">제출</td><td>내보내기 <b>mp4</b> → <b>연수 갤러리</b>에 영상 → <b>클래스보드</b>에 글 (96 · 101장 버튼)</td><td>—</td></tr>
   </table>
   <div class="hl" data-in>광고 1편 예상: 이미지만 <b>약 20</b> · 한 장면 움직이면 <b>+140</b> · 네 장면 모두면 <b>약 580</b>. 생성 버튼의 <b>표시 금액을 먼저 확인</b>하고 눌러요.</div>
 </section>
@@ -1507,7 +1516,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 
 <section class="slide" data-group="Vrew 함께 만들기 ①" data-title="2 대본 프롬프트" data-min="2.5">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 2 · <b>대본</b></span></div>
-  <h2 data-in>세 칸 채우고 → <em>복사 → 붙여넣기</em> → AI 글쓰기</h2>
+  <h2 data-in><em>대본 프롬프트</em> 만들기</h2>
   <div class="row" style="gap:26px">
     <div class="col" style="width:400px;gap:14px">
       <div class="card inp" data-in>
@@ -1538,6 +1547,42 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <div class="hwpg" hidden><img src="assets/adlesson/ad-p5.jpg" data-hwp="b5" alt="실제 광고제 제작 차시 교안 5/36 · 세 칸을 이렇게 채워요" loading="lazy"><img src="assets/adlesson/ad-p6.jpg" data-hwp="b6" alt="실제 광고제 제작 차시 교안 6/36 · 왼쪽 칸을 채우면 오른쪽이 완성돼요" loading="lazy"></div>
   <div class="hl" data-in>세 칸은 또렷하게: 내 거 → <b>컵</b> · 예쁨 → <b>투명하고 물이 반쯤 담겨 있음</b> · 아주 신기함 → <b>물을 담으면 젤리로 변한다</b> (광고제 교안 5쪽)</div>
 </section>
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="2 붙여넣기 · 화면 1" data-min="0.75">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 2 · <b>붙여넣기 · 화면 1</b> · ‘영상의 대본을 입력해주세요’</span></div>
+  <h2 data-in>화면 1: <em>AI로 대본 생성하기</em>에 붙여 넣어요</h2>
+  <div class="row gd" style="gap:30px;align-items:flex-start">
+    <div data-in style="width:900px"><div class="frame"><img src="assets/guide/paste1.jpg" alt="화면 1 · AI로 대본 생성하기 → 대본 프롬프트 칸 → 대본 생성하기"></div></div>
+    <div class="col f1">
+      <ol class="steps vsteps" data-in>
+        <li><span>오른쪽 위 <b>AI로 대본 생성하기</b> 클릭</span></li>
+        <li><span><b>대본 프롬프트</b> 칸에 복사한 프롬프트 붙여넣기 <span class="small">(Ctrl + V)</span></span></li>
+        <li><span><b>대본 생성하기</b> 클릭</span></li>
+      </ol>
+      <div class="vtip" data-in>큰 <b>‘대본’ 칸이 아니라</b> 작은 창의 <b>‘대본 프롬프트’ 칸</b>이에요. 대본이 나오면 <b>다음은 아직</b> — 먼저 고쳐요.</div>
+    </div>
+  </div>
+  <div class="hl" data-in>‘원하는 비디오 스타일을 선택하세요’가 떴다면 → <b>다음 장 (화면 2)</b></div>
+</section>
+
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="2 붙여넣기 · 화면 2" data-min="0.75">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 2 · <b>붙여넣기 · 화면 2</b> · ‘원하는 비디오 스타일을 선택하세요’</span></div>
+  <h2 data-in>화면 2: <em>스타일 없이</em> 시작하고 붙여 넣어요</h2>
+  <div class="row gd" style="gap:22px;align-items:flex-start">
+    <div data-in style="width:560px"><div class="frame"><img src="assets/guide/paste2a.jpg" alt="화면 2 · 스타일 없이 바로 시작하기 → 다음"></div><div class="cap">① 스타일 고르기</div></div>
+    <div data-in style="width:560px"><div class="frame"><img src="assets/guide/paste2b.jpg" alt="화면 2 · 주제 → 대본 프롬프트 → AI 글쓰기"></div><div class="cap">② 대본 작성</div></div>
+    <div class="col f1">
+      <ol class="steps vsteps" data-in>
+        <li><span><b>스타일 없이 바로 시작하기</b></span></li>
+        <li><span><b>다음</b></span></li>
+        <li><span><b>주제</b>에 내 물건 이름 <span class="small">(예: 컵)</span></span></li>
+        <li><span><b>대본 프롬프트</b>에 붙여넣기</span></li>
+        <li><span><b>AI 글쓰기</b></span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="hl" data-in>오른쪽 <b>‘대본’ 칸에 영어 4문장</b>이 나오면 성공. 고친 다음에 <b>다음</b>을 눌러요.</div>
+</section>
+
 
 <section class="slide" data-group="Vrew 함께 만들기 ①" data-title="3 대본 고치기" data-min="2.5">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 3 · <b>고치기 · 크레딧 0</b></span></div>
@@ -1560,25 +1605,54 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <div class="hl" data-in>대본 칸에서 고치면 <b>크레딧이 들지 않아요</b>.</div>
 </section>
 
-<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 화면 비율·자막" data-min="2">
-  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>미디어 설정</b></span></div>
-  <h2 data-in>처음 값을 바꿔요: <em>9:16 · 자막 중하단</em></h2>
-  <div class="row" style="gap:28px">
-    <div data-in style="width:580px"><div class="frame"><img src="assets/vb-07-media-before.jpg" alt=""></div><div class="cap">처음 화면 — 16:9 가로로 시작할 수 있어요</div></div>
-    <table class="t f1" data-in>
-      <tr><th style="width:170px">항목</th><th>이렇게</th></tr>
-      <tr><td class="k">화면 비율</td><td><b>9:16</b> (세로)</td></tr>
-      <tr><td class="k">자막</td><td>켬 · <b>중하단</b> · <b>길게</b></td></tr>
-      <tr><td class="k">배경음악</td><td>선택</td></tr>
-      <tr><td class="k">무료 비디오</td><td>끔</td></tr>
-    </table>
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 미디어 설정 한눈에" data-min="0.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>미디어 설정</b> · 대본을 고치고 ‘다음’을 누르면 나와요</span></div>
+  <h2 data-in>미디어 설정, <em>다섯 군데</em>만 바꿔요</h2>
+  <div class="row gd" style="gap:30px;align-items:flex-start">
+    <div data-in style="width:860px"><div class="frame"><img src="assets/guide/media-all.jpg" alt="미디어 설정 화면 · 바꿀 곳 다섯 군데"></div></div>
+    <ol class="steps vsteps f1" data-in>
+      <li><span>화면 비율 → <b>9:16</b> 세로</span></li>
+      <li><span>자막 → <b>중하단 · 길게</b></span></li>
+      <li><span>AI 목소리 → <b>영어</b> 목소리</span></li>
+      <li><span>배경음악 → 골라도, 꺼도 OK</span></li>
+      <li><span>생성 모델 → <b>GPT Image 2.5 Flare</b></span></li>
+    </ol>
   </div>
-  <div class="hl" data-in>비율은 <b>맨 처음에</b>. 수업에서도 가로로 나와 버린 영상이 있었어요.</div>
+  <div class="hl" data-in>이번 연수는 <b>모델을 모두 통일</b>해요 · 이미지 <b>GPT Image 2.5 Flare</b> · 영상 <b>Gemini Omni 1.2 Flash</b></div>
 </section>
 
-<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 영어 목소리" data-min="2.5">
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 화면 비율·자막" data-min="1">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>미디어 설정 ① ②</b></span></div>
+  <h2 data-in>9:16 세로, 자막은 <em>중하단 · 길게</em></h2>
+  <div class="row gd" style="gap:30px;align-items:flex-start">
+    <div data-in style="width:900px"><div class="frame"><img src="assets/guide/media-sub.jpg" alt="화면 비율 9:16 · 자막 중하단 · 길게"></div></div>
+    <div class="col f1">
+      <ol class="steps vsteps" data-in>
+        <li><span>화면 비율 <b>9:16</b> 클릭 <span class="small">(맨 처음에!)</span></span></li>
+        <li><span>자막 줄 오른쪽 칸 클릭 → 작은 창</span></li>
+        <li><span>위치 <b>중하단</b></span></li>
+        <li><span>길이 <b>길게</b> → ✕로 닫기</span></li>
+      </ol>
+      <div class="vtip" data-in>처음 화면이 <b>16:9 가로</b>일 수 있어요. 수업에서도 가로로 나와 버린 영상이 있었어요.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 AI 목소리는 여기서" data-min="0.25">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>미디어 설정 ③</b></span></div>
+  <h2 data-in>AI 목소리는 <em>미디어 설정</em>에서 열어요</h2>
+  <div class="row gd" style="gap:22px;align-items:center">
+    <div data-in style="width:760px"><div class="frame"><img src="assets/guide/media-voice.jpg" alt="미디어 설정 · AI 목소리 줄"></div><div class="cap">① <b>AI 목소리</b> 줄의 목소리 이름 <span class="small">(예: 애덤 ›)</span> 클릭</div></div>
+    <div data-in class="gd-arrow">→</div>
+    <div data-in class="f1"><div class="frame"><img src="assets/cap/vo-0.jpg" alt="AI 목소리 설정 창"></div><div class="cap">‘AI 목소리 설정’ 창이 열려요</div></div>
+  </div>
+  <div class="hl" data-in>창이 열리면 <b>다음 장</b>에서 영어 목소리를 골라요.</div>
+</section>
+
+
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 AI 목소리 선택하기" data-min="2.5">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>AI 목소리 · 만들기 전 (미디어 설정)</b></span></div>
-  <h2 data-in>영어 대본이면, <em>목소리 언어</em>도 영어로</h2>
+  <h2 data-in><em>AI 목소리</em> 선택하기: 영어 목소리로</h2>
   <div class="row" style="gap:26px;align-items:flex-start">
     <div data-in style="width:760px"><div class="frame"><img src="assets/cap/vo-0.jpg" alt="Vrew AI 목소리 설정 창"></div><div class="cap">미디어 설정 맨 위 「AI 목소리」를 누르면 열리는 창 · 광고제 제작 차시 수업 화면</div></div>
     <div class="col f1">
@@ -1594,23 +1668,42 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
   <div class="hl" data-in>💡 <b>수업 팁</b> · 할로윈 수업에서도 <b>영어 목소리를 확인하지 않은 영상</b>은 한국어 화자처럼 들리기도 했어요. <b>직접 들어 보는 과정</b>이 필요해요.</div>
 </section>
 
-<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 AI 이미지 설정" data-min="2.5">
-  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>AI 이미지</b></span></div>
-  <h2 data-in>문장마다 장면 하나: <em>Low · 자주</em></h2>
-  <div class="row" style="gap:24px">
-    <div class="col" style="width:500px;gap:14px">
-      <table class="t" data-in>
-        <tr><th style="width:150px">항목</th><th>이렇게</th></tr>
-        <tr><td class="k">AI 이미지</td><td>켬</td></tr>
-        <tr><td class="k">모델 · 품질</td><td>Flare · <b>Low</b> <span class="sub">(1장 5)</span></td></tr>
-        <tr><td class="k">삽입 빈도</td><td><b>자주</b> <span class="sub">(가끔 → 2장)</span></td></tr>
-        <tr><td class="k">참고 이미지</td><td>선택 · 내 물건 사진</td></tr>
-      </table>
-      <p class="small" data-in>모델 이름·크레딧은 당일 화면 기준.</p>
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 AI 이미지 설정" data-min="1">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>미디어 설정 ⑤ · AI 이미지</b></span></div>
+  <h2 data-in>AI 이미지: <em>Flare · Low · 자주</em></h2>
+  <div class="row gd" style="gap:30px;align-items:flex-start">
+    <div class="col" style="width:560px;gap:14px">
+      <div data-in><div class="frame"><img src="assets/guide/media-model.jpg" alt="생성 모델 GPT Image 2.5 Flare"></div></div>
+      <ol class="steps vsteps" data-in>
+        <li><span>생성 모델 → <b>GPT Image 2.5 Flare</b></span></li>
+        <li><span>품질 <b>Low</b> <span class="small">(1장 5크레딧)</span></span></li>
+        <li><span>무료 비디오 <b>끔</b></span></li>
+        <li><span>삽입 빈도 <b>자주</b> <span class="small">(가끔이면 2장만 나와요)</span></span></li>
+      </ol>
     </div>
-    <div class="f1" data-in><div class="prompt" data-tpl="image"></div></div>
+    <div data-in class="f1"><div class="frame"><img src="assets/guide/media-low.jpg" alt="품질 Low · 무료 비디오 끔 · 삽입 빈도 자주"></div><div class="cap">미디어 설정을 아래로 내리면 보여요 · 모델 이름·크레딧은 당일 화면 기준</div></div>
   </div>
 </section>
+
+<section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 이미지 프롬프트 만들기" data-min="1.5">
+  <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>이미지 프롬프트</b> · 미디어 설정 아래쪽</span></div>
+  <h2 data-in><em>이미지 프롬프트</em> 만들기</h2>
+  <div class="row gd" style="gap:26px;align-items:flex-start">
+    <div class="col" style="width:640px;gap:12px">
+      <div data-in><div class="frame"><img src="assets/guide/media-prompt.jpg" alt="이미지 프롬프트 칸 · 참고 이미지 · 만들기"></div></div>
+      <ol class="steps vsteps" data-in>
+        <li><span><b>이미지 프롬프트</b> 칸에 붙여넣기</span></li>
+        <li><span>(선택) <b>참고 이미지</b> · 내 물건 사진</span></li>
+        <li><span><b>만들기</b></span></li>
+      </ol>
+    </div>
+    <div class="col f1" style="gap:12px">
+      <div class="stybar" data-in><b>그림체 고르기</b><button class="stychip on" data-sty="3D 애니메이션, 부드러운 빛, 파스텔 색감">3D 애니메이션</button><button class="stychip" data-sty="맑은 수채화, 부드러운 붓 터치, 종이 질감">수채화</button><button class="stychip" data-sty="말랑한 클레이 점토, 손으로 빚은 질감">클레이</button><button class="stychip" data-sty="실사 사진, 자연광, 얕은 심도">실사 사진</button><button class="stychip" data-sty="크레파스로 그린 어린이 그림, 따뜻한 색">크레파스</button><button class="stychip" data-sty="귀여운 픽셀 아트, 선명한 색">픽셀 아트</button></div>
+      <div data-in><div class="prompt" data-tpl="image"></div></div>
+    </div>
+  </div>
+</section>
+
 
 <section class="slide" data-group="Vrew 함께 만들기 ①" data-title="4 이미지 프롬프트 뜯어보기" data-min="0.5">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Vrew · Step 4 · <b>프롬프트 한 줄씩</b></span><span class="hwgo hwtop" data-hw="b18,b19,b4" title="실제 광고제 교안 3장 보기"></span></div>
@@ -1619,6 +1712,7 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
     <tr><th>프롬프트의 줄</th><th style="width:260px">이 줄이 정하는 것</th></tr>
     <tr><td>대본 4문장에 맞춰 정확히 4장 · 문장 하나에 이미지 1장씩</td><td><b>몇 장</b>, 어느 문장에</td></tr>
     <tr><td>1번 화면 가운데 크게 · 2번 가까이서 본 모습 · 3번 능력이 눈에 보이는 장면 · 4번 밝은 빛 속에서 반짝</td><td>문장마다 보여 줄 <b>장면</b></td></tr>
+    <tr><td>그림체: 3D 애니메이션, 부드러운 빛, 파스텔 색감 <span class="sub">(버튼으로 바꾸기)</span></td><td><b>그림체</b> · 네 장 모두 같게</td></tr>
     <tr><td>한 이미지에 장면 하나만, 여러 칸으로 나누지 마</td><td>한 장 = <b>한 장면</b></td></tr>
     <tr><td>밝고 단순한 배경 · 세로 9:16 · 화면 아래쪽에 자막 넣을 여백</td><td>배경 · <b>비율</b> · <b>자막 자리</b></td></tr>
     <tr><td>글자·숫자·가격표·로고·워터마크·사람 얼굴은 넣지 마</td><td><b>넣지 말 것</b></td></tr>
@@ -2777,7 +2871,7 @@ window.__render=render;
     else if(k==='Home')go(0);else if(k==='End')go(S.length-1);else if(k==='t'||k==='T')toc.classList.toggle('on');else if(false)notes.classList.toggle('on');else if(k==='p'||k==='P')openPW();else if(k==='Escape'){toc.classList.remove('on');notes.classList.remove('on')}else if(k==='f'||k==='F')document.getElementById('fsBtn').click();});
   document.querySelectorAll('video[data-pend]').forEach(v=>{const ph=v.parentElement.querySelector('.ph');v.addEventListener('loadeddata',()=>{if(ph)ph.remove()})});
   document.querySelectorAll('.quiz button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.add(x.hasAttribute('data-right')?'right':'wrong'));document.getElementById('quizReveal').classList.add('on')});
-  const st={obj:'컵',look:'하얗고 작음',power:'아이스크림을 만든다'};
+  const st={obj:'컵',look:'하얗고 작음',power:'아이스크림을 만든다',style:'3D 애니메이션, 부드러운 빛, 파스텔 색감'};
   const esc=x=>String(x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const F=k=>'<span class="fill">'+esc(st[k]||'【'+k+'】')+'</span>';
   const T={
@@ -2800,6 +2894,7 @@ window.__render=render;
 2번 문장: 가까이서 본 ${F('obj')} (${F('look')})
 3번 문장: ${F('power')} — 이 능력이 눈에 보이는 ${F('obj')}
 4번 문장: 밝은 빛 속에서 반짝이는 ${F('obj')}
+그림체: ${F('style')}
 한 이미지에 장면 하나만 표현하고 여러 칸으로 나누지 마.
 밝고 단순한 배경, 세로 9:16, 화면 아래쪽에는 자막을 넣을 여백을 남겨줘.
 글자·숫자·가격표·로고·워터마크·사람 얼굴은 넣지 마.`};
@@ -2810,6 +2905,7 @@ window.__render=render;
     s._draw=draw;s._own=own;
     ins.forEach(i=>i.addEventListener('input',()=>{store[i.dataset.k]=i.value;if(!own){document.querySelectorAll('input[data-k="'+i.dataset.k+'"]').forEach(o=>{if(o!==i&&!o.closest('.slide')._own)o.value=i.value});S.forEach(x=>{if(x._draw&&!x._own)x._draw()})}else draw()}));
     draw();});
+  document.querySelectorAll('.stychip').forEach(b=>b.onclick=()=>{st.style=b.dataset.sty;document.querySelectorAll('.stychip').forEach(x=>x.classList.toggle('on',x.dataset.sty===st.style));S.forEach(x=>{if(x._draw&&!x._own)x._draw()})});
   const EX={cup:{obj:'컵',look:'하얗고 작음',power:'아이스크림을 만든다'},bottle:{obj:'유리병',look:'투명하고 금빛 뚜껑이 달림',power:'뚜껑을 열면 빛나는 금붕어들이 날아오른다'}};
   document.querySelectorAll('.exbtn').forEach(b=>b.onclick=()=>{const v=EX[b.dataset.ex];Object.assign(st,v);document.querySelectorAll('input[data-k]').forEach(i=>{if(!i.closest('.slide')._own)i.value=v[i.dataset.k]});S.forEach(x=>{if(x._draw&&!x._own)x._draw()})});
   // 출처 꼬리표: 눈에 안 보이는 유니코드 태그 문자로 프롬프트 끝에 붙어요 (AI에 넣으면 읽혀요)
