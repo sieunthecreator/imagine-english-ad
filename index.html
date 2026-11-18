@@ -1177,18 +1177,28 @@ video:-webkit-full-screen{object-fit:contain!important;background:#000;border:0!
 
 <section class="slide" data-step="3" data-group="수업 사례 ② 영어 상상 광고제" data-title="③ 혼자 쓴 영어 vs 틀" data-min="0.25">
   <div class="top" data-in><span class="vpill"><img src="assets/vrew-logo.svg" alt="Vrew"></span><span class="kicker">Step 3 · <b>왜 AI 초안인가</b></span></div>
-  <h2 data-in>틀이 있으면 <em>고칠 곳이 보여요</em></h2>
-  <div class="row" style="gap:26px">
-    <div class="card good" data-in style="width:400px"><span class="lbl good">틀 프롬프트로 받은 AI 초안 → 단어만 바꿔 고친 대본</span>
-      <p class="en" style="font-size:26px;line-height:1.75;margin-top:12px">This is my crocodile toy.<br>It is small and green.<br>It can bite.<br>Try it today!</p></div>
-    <table class="t f1" data-in>
-      <tr><th>아이가 혼자 쓴 문장</th><th style="width:200px">막힌 점</th><th style="width:290px">틀로 고친다면</th></tr>
-      <tr><td class="en" style="font-size:19px">It can make person wearing this shoes can walk on the sky</td><td>12단어, can 두 번</td><td class="en o">It can walk on clouds.</td></tr>
-      <tr><td class="en">It can Erasable</td><td>can 뒤가 동사 아님</td><td class="en o">It can erase everything.</td></tr>
-      <tr><td class="en">It looks like soft cloud</td><td>틀 밖, a 빠짐</td><td class="en o">It is soft and white.</td></tr>
-    </table>
+  <h2 data-in>틀을 먼저 주면, <em>아이가 고칠 수 있어요</em></h2>
+  <style>.fr3{display:grid;grid-template-columns:1.12fr 1fr .9fr;gap:22px;margin-top:6px;align-items:stretch}.fr3 .card{display:flex;flex-direction:column;gap:10px}.fr3 h3{font-size:24px;margin:0}.fr3 .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;font:800 19px var(--sans);margin-right:8px;vertical-align:2px}.fr3 .s{font-size:18px;line-height:1.4;padding:8px 0;border-bottom:1px dashed var(--line)}.fr3 .s:last-child{border-bottom:0}.fr3 .s .en{display:block;font-size:19px}.fr3 .s small{color:var(--muted);font-size:15px;font-weight:700}.fr3 .fx{display:flex;flex-wrap:wrap;gap:8px}.fr3 .fx span{background:#eef8f7;border:1px solid #cfe8e6;border-radius:999px;padding:5px 12px;font:700 18px var(--serif)}.fr3 .k{font-size:15px;font-weight:800;color:var(--muted);letter-spacing:.02em}</style>
+  <div class="fr3">
+    <div class="card bad" data-in><h3><span class="n">1</span>틀 없이 쓰면</h3>
+      <div class="s"><span class="en">It can make person wearing this shoes can walk on the sky</span><small>12단어 · can 두 번</small></div>
+      <div class="s"><span class="en">It can Erasable</span><small>can 뒤가 동사가 아님</small></div>
+      <div class="s"><span class="en">It looks like soft cloud</span><small>틀 밖 · a 빠짐</small></div>
+    </div>
+    <div class="card sun" data-in><h3><span class="n">2</span>선생님이 먼저 알려 줘요</h3>
+      <div class="k">문장 틀</div>
+      <div class="fx"><span>This is my …</span><span>It is …</span><span>It can …</span><span>Try …</span></div>
+      <div class="k" style="margin-top:4px">대본 프롬프트에 넣을 것</div>
+      <div class="fx"><span style="font-family:var(--sans)">물건</span><span style="font-family:var(--sans)">모습</span><span style="font-family:var(--sans)">특별한 기능</span></div>
+      <div class="k" style="margin-top:4px">틀에 맞게 고치면</div>
+      <p class="en o" style="font-size:20px;line-height:1.6;margin:0">It can walk on clouds.<br>It can erase everything.<br>It is soft and white.</p>
+    </div>
+    <div class="card good" data-in><h3><span class="n">3</span>최종 대본, 교사가 한 번</h3>
+      <p class="en" style="font-size:24px;line-height:1.7;margin:0">This is my crocodile toy.<br>It is small and green.<br>It can bite.<br>Try it today!</p>
+      <p style="font-size:17px;margin:0;color:var(--muted)">틀 초안에서 <b>단어만 바꿔</b> 고친 대본 · 4문장 모두 5단어 이내</p>
+    </div>
   </div>
-  <div class="hl" data-in>틀로 받은 초안을 아이가 <b>단어만 바꿔 고친</b> 악어 장난감 대본은 4문장 모두 5단어 이내였어요. 틀 밖으로 나가면 <b>교사가 한 번</b> 봐 주세요.</div>
+  <div class="hl" data-in>틀과 넣을 것은 <b>교사가 먼저</b> → 아이는 <b>틀에 맞게 고치기</b> → 최종 대본은 <b>교사가 중간에 한 번</b> 확인</div>
 </section>
 
 <section class="slide" data-step="4" data-group="수업 사례 ② 영어 상상 광고제" data-title="④ 미디어 설정 · 영어 목소리" data-min="0.5">
